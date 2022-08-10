@@ -25,8 +25,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
                 }
             }
 
-            string test = array3D.ToString();
-            Console.Write(test);
+            foreach (int row in array3D)
+            {
+                Console.WriteLine(row);
+            }
         }
     }
 }
