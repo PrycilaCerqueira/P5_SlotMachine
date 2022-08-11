@@ -18,7 +18,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             smObj.column = 3;
             smObj.item = 1;
 
-            //defined and initiate an array 3D - 3rows, 3colums, 1item.
+            //defines and initiates an array 3D - 3rows, 3colums, 1item.
             int[,,] array3D = new int [smObj.row, smObj.column, smObj.item];            
             
             //Nested loops to fill up the array with random numbers
@@ -32,7 +32,6 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
                     }
                 }
             }
-
             UI.PrintArray3x3Matrix(array3D);
         }
     }
