@@ -7,7 +7,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
         static int GetRandomNumber()
         {
             Random rnd = new Random();
-            int num = rnd.Next(1, 11);
+            int num = rnd.Next(1, 10);
             return num;
         }
         static void Main(string[] args)

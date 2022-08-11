@@ -21,7 +21,7 @@ namespace P5_SlotMachine
                 {
                     for(int item = 0; item < array3D.GetLength(2); item++) //GetLength(<dimension>) returns (items = 1)
                     {
-                       Console.Write($" {array3D[row, column, 0]}"); //Print the numbers in line sepated by a space
+                       Console.Write($"  {array3D[row, column, 0]}"); //Print the numbers in line sepated by a space
                     }
                 }
                 Console.WriteLine();//Skips a line to print another set of numbers in line on the next iteraction
