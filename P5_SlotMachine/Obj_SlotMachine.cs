@@ -8,5 +8,8 @@ namespace P5_SlotMachine
 {
     class Obj_SlotMachine
     {
+
+
     }
+
 }

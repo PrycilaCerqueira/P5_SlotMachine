@@ -26,15 +26,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
                 }
             }
 
-            //Nested array to print the array3D in na 3x3 matrix shape
-            for (int row = 0; row < 3; row++) 
-            {
-                for(int column = 0; column < 3; column++)
-                {
-                    Console.Write($" {array3D[row, column, 0]}"); //Print the numbers in line sepated by a space
-                }
-                Console.WriteLine();//Skip a line to print another set of numbers in line on the next iteraction
-            }
+            UI.PrintArray3x3Matrix(array3D);
         }
     }
 }
