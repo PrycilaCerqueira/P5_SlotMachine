@@ -12,16 +12,23 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
         }
         static void Main(string[] args)
         {
-            int[,,] array3D = new int [3, 3, 1]; //defined the my array 3D - 3rows, 3colums, 1item.           
+            //Creates an instance of the SlotMachine Obejct and set values for its properties
+            Obj_SlotMachine smObj = new Obj_SlotMachine();
+            smObj.row = 3;
+            smObj.column = 3;
+            smObj.item = 1;
+
+            //defined and initiate an array 3D - 3rows, 3colums, 1item.
+            int[,,] array3D = new int [smObj.row, smObj.column, smObj.item];            
             
-            //Nested loops to fill up the array with random number
-            for (int row = 0 ; row < 3; row++)
+            //Nested loops to fill up the array with random numbers
+            for (int row = 0 ; row < smObj.row; row++)
             {
-                for (int column = 0; column < 3; column++)
+                for (int column = 0; column < smObj.column; column++)
                 {
-                    for (int item = 0; item < 1; item++) // This loop can be elimitated and use the direct index of 0.
+                    for (int item = 0; item < smObj.item; item++) // This loop can be elimitated and use the direct index of 0.
                     {
-                        array3D[row, column, item] = GetRandomNumber();
+                        array3D[row, column, item] = GetRandomNumber(); //assigns a rdn number to each array item
                     }
                 }
             }

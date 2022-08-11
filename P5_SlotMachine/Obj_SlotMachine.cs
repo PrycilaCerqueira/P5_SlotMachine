@@ -8,7 +8,9 @@ namespace P5_SlotMachine
 {
     class Obj_SlotMachine
     {
-
+        public int row;
+        public int column;
+        public int item;
 
     }
 
