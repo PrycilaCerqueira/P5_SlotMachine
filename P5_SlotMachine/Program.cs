@@ -4,12 +4,19 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 {
     internal class Program
     {
+        /// <summary>
+        /// Generates a random number
+        /// </summary>
+        /// <returns>Int number from 1 to 9</returns>
         static int GetRandomNumber()
         {
             Random rnd = new Random();
             int num = rnd.Next(1, 10);
             return num;
         }
+
+
+
         static void Main(string[] args)
         {
             //Creates an instance of the SlotMachine Obejct and set values for its properties
@@ -31,5 +38,6 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             }
             UI.PrintArray3x3Matrix(array2D);
         }
+
     }
 }
