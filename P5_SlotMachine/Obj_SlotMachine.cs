@@ -10,7 +10,7 @@ namespace P5_SlotMachine
     {
         public int row;
         public int column;
-        public int item;
+        //public int item;
 
     }
 
