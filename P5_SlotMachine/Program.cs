@@ -15,12 +15,15 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             return num;
         }
 
+        static bool CheckRowsCombinatios(int[] array2D)
+        {
 
+        }
 
         static void Main(string[] args)
         {
             //Creates an instance of the SlotMachine Obejct and set values for its properties
-            Obj_SlotMachine smObj = new Obj_SlotMachine();
+            SlotMachine smObj = new SlotMachine();
             smObj.row = 3;
             smObj.column = 3;
             

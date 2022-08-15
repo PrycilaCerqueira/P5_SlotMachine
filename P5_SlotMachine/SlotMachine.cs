@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace P5_SlotMachine
 {
-    class Obj_SlotMachine
+    class SlotMachine
     {
         public int row;
         public int column;
