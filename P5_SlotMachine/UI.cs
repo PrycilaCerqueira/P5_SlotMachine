@@ -12,7 +12,7 @@ namespace P5_SlotMachine
         /// Prints an array in a 3x3 matrix shape
         /// </summary>
         /// <param name="array2D">Integer array [3,3] </param>
-        public static void PrintArray3x3Matrix(int[,] array2D)
+        public static void PrintArraMatrix(int[,] array2D)
         {
             for (int row = 0; row < array2D.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {

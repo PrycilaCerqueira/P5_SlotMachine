@@ -15,10 +15,28 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             return num;
         }
 
-        static bool CheckRowsCombinatios(int[] array2D)
+        
+        static void CheckRowsCombinatios(int[,] array2D)
         {
-
+            //int aux = array2D[0,0];
+            
+            if (array2D[0,0] == array2D[0,1])
+            {
+                    Console.WriteLine($" {array2D[0,0]} {array2D[0,1]}");
+            }
+            if (array2D[0,0] == array2D[0,2])
+            {
+                Console.WriteLine($" {array2D[0,0]} {array2D[0,2]}");
+            }
+            if (array2D[0,1] == array2D[0,2])
+            {
+                Console.WriteLine($" {array2D[0,1]} {array2D[0,2]}");
+            }
         }
+            
+
+    
+        
 
         static void Main(string[] args)
         {
@@ -39,7 +57,9 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
                     array2D[row, column] = GetRandomNumber(); //assigns a rdn number to each array item
                 }
             }
-            UI.PrintArray3x3Matrix(array2D);
+            UI.PrintArraMatrix(array2D);
+            CheckRowsCombinatios(array2D);
+
         }
 
     }
