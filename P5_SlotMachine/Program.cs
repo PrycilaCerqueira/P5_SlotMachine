@@ -21,10 +21,15 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			for (int i = 0; i < auxArray.GetLength(0); i++)
 			{
 				for (int j = 1; j < auxArray.GetLength(0); j++)
-				{
+                {
+                    if (i == j)
+                    {
+                        continue;
+                    }
 					if (auxArray[i] == auxArray[j])
 					{
-						Console.WriteLine($"{auxArray[i]} = {auxArray[j]}");
+						Console.WriteLine($"They are the same {auxArray[i]} = {auxArray[j]}");
+
 					}
 
 				}
