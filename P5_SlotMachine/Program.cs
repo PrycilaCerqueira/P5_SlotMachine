@@ -15,7 +15,11 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			return num;
 		}
 
-		
+		/// <summary>
+		/// It verifies if the array elements are the same 
+		/// </summary>
+		/// <param name="auxArray">Int array of 3 elements</param>
+		/// <returns>True or False</returns>
 		static bool CheckCombinations(int[] auxArray)
 		{
 			if (auxArray[0] == auxArray[1] && auxArray[0] == auxArray[2])
