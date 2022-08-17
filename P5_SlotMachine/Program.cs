@@ -20,10 +20,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 		/// </summary>
 		/// <param name="array2D">Two dimensions array</param>
 		/// <param name="row">Number of rows</param>
-		/// <returns>1 dimension array of 3 elements</returns>
+		/// <returns>1 dimension array</returns>
 		static int[] CreateRowsAuxArray(int[,] array2D, int row)
         {
-			int[] auxArray = new int[3];
+			int[] auxArray = new int[array2D.GetLength(0)];
 
 			for (int col = 0; col < array2D.GetLength(0); col++)
 			{
@@ -31,6 +31,24 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			return auxArray;
 		}
+
+		/// <summary>
+		/// It creates a auxiliar 1D array 
+		/// </summary>
+		/// <param name="array2D">Two dimensions array</param>
+		/// <param name="col">Number of columns</param>
+		/// <returns>1 dimension array</returns>
+		static int[] CreateColumnsAuxArray(int[,] array2D, int col)
+        {
+			int[] auxArray = new int[array2D.GetLength(1)];
+
+			for (int row = 0; row <array2D.GetLength(1); row++)
+            {
+				auxArray[row] = array2D[row, col];
+            }
+			return auxArray;
+
+        }
 
 		/// <summary>
 		/// It verifies if the array elements are the same 
@@ -83,6 +101,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 				result = CheckCombinations(auxArray);
 				UI.PrintWinLose(result, row, "row");
 			}
+
+
 			
 
 
