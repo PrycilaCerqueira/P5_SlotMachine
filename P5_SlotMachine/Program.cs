@@ -5,7 +5,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	internal class Program
 	{
 		/// <summary>
-		/// Generates a random number
+		/// It generates a random number
 		/// </summary>
 		/// <returns>Int number from 1 to 9</returns>
 		static int GetRandomNumber()
@@ -15,6 +15,12 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			return num;
 		}
 
+		/// <summary>
+		/// It creates a auxiliar 1D array 
+		/// </summary>
+		/// <param name="array2D">Two dimensions array</param>
+		/// <param name="row">Number of rows</param>
+		/// <returns>1 dimension array of 3 elements</returns>
 		static int[] CreateRowsAuxArray(int[,] array2D, int row)
         {
 			int[] auxArray = new int[3];
@@ -67,7 +73,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			UI.PrintArraMatrix(array2D);
 
-			//Separates the 2D array into a smaller array and checks their rows elements similarities
+			//Separates the 2D array into smaller arrays and checks their row elements similarities
 			bool result;
 			int[] auxArray;
 

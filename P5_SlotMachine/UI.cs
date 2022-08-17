@@ -24,15 +24,21 @@ namespace P5_SlotMachine
             }
         }
 
-        public static void PrintWinLose(bool resValidation, int iteraction, string rowCol)
+        /// <summary>
+        /// It printes a message of the array elements similirities
+        /// </summary>
+        /// <param name="resValidation">True or False</param>
+        /// <param name="index">Index number</param>
+        /// <param name="rowCol">Row or Column words</param>
+        public static void PrintWinLose(bool resValidation, int index, string rowCol)
         {
             if (resValidation == true)
             {
-                Console.WriteLine($"All numbers are the same in {rowCol} {iteraction+1}.");
+                Console.WriteLine($"All numbers are the same in {rowCol} {index+1}.");
             }
             else
             {
-                Console.WriteLine($"Not all numbers are the same in {rowCol} {iteraction+1}.");
+                Console.WriteLine($"Not all numbers are the same in {rowCol} {index+1}.");
             }
 
         }
