@@ -24,15 +24,15 @@ namespace P5_SlotMachine
             }
         }
 
-        public static void PrintWinLose(bool resValidation)
+        public static void PrintWinLose(bool resValidation, int iteraction, string rowCol)
         {
             if (resValidation == true)
             {
-                Console.WriteLine("All numbers are the same in this sequence.");
+                Console.WriteLine($"All numbers are the same in {rowCol} {iteraction+1}.");
             }
             else
             {
-                Console.WriteLine("Not all number are the same in this sequence.");
+                Console.WriteLine($"Not all numbers are the same in {rowCol} {iteraction+1}.");
             }
 
         }

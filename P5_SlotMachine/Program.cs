@@ -15,6 +15,17 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			return num;
 		}
 
+		static int[] CreateRowsAuxArray(int[,] array2D, int row)
+        {
+			int[] auxArray = new int[3];
+
+			for (int col = 0; col < array2D.GetLength(0); col++)
+			{
+				auxArray[col] = array2D[row, col];
+			}
+			return auxArray;
+		}
+
 		/// <summary>
 		/// It verifies if the array elements are the same 
 		/// </summary>
@@ -32,8 +43,6 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             }
 	
 		}
-
-
 
 
 
@@ -58,14 +67,21 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			UI.PrintArraMatrix(array2D);
 
-			int[] auxArray = new int[3];
-			for (int col = 0; col < array2D.GetLength(0); col++)
-			{
-				auxArray[col] = array2D[0, col];
-			}
+			//Separates the 2D array into a smaller array and checks their rows elements similarities
+			bool result;
+			int[] auxArray;
 
-			bool result = CheckCombinations(auxArray);
-			UI.PrintWinLose(result);
+			for (int row = 0; row < array2D.GetLength(0); row++)
+            {
+				auxArray = CreateRowsAuxArray(array2D, row);
+				result = CheckCombinations(auxArray);
+				UI.PrintWinLose(result, row, "row");
+			}
+			
+
+
+
+
 
 
 		}
