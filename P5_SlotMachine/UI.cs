@@ -23,5 +23,19 @@ namespace P5_SlotMachine
                 Console.WriteLine();//Skips a line to print another set of numbers in line on the next iteraction
             }
         }
+
+        public static void PrintWinLose(bool resValidation)
+        {
+            if (resValidation == true)
+            {
+                Console.WriteLine("All numbers are the same in this sequence.");
+            }
+            else
+            {
+                Console.WriteLine("Not all number are the same in this sequence.");
+            }
+
+        }
     }
+
 }

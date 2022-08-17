@@ -16,47 +16,17 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 		}
 
 		
-		static void CheckRowsCombinatios(int[] auxArray)
+		static bool CheckCombinations(int[] auxArray)
 		{
-
-			for (int i = 0; i < auxArray.GetLength(0); i++)
-			{
-				int auxIndex1 = i + 1;
-				int auxIndex2 = i + 2;
-								
-				if (auxIndex1 < 3)
-                {
-					if (auxArray[i] == auxArray[auxIndex1])
-					{
-						Console.WriteLine($"They are the same {auxArray[i]} = {auxArray[auxIndex1]}");
-
-					}
-				}
-				
-				if (auxIndex2 < 3)
-                {
-					if (auxArray[i] == auxArray[auxIndex2])
-					{
-						Console.WriteLine($"They are the same {auxArray[i]} = {auxArray[auxIndex2]}");
-					}
-
-				}
-				/*
-				if (auxIndex1 < 3 && auxIndex2 < 3)
-                {
-					if (auxArray[auxIndex1] == auxArray[i] && auxArray[auxIndex2] == auxArray[i] && auxArray[auxIndex1] == auxArray[auxIndex2])
-                    {
-						Console.WriteLine("You win!!");
-						break;
-                    }
-                }
-				*/
-				
-				
-
-
+			if (auxArray[0] == auxArray[1] && auxArray[0] == auxArray[2])
+            {
+				return true;
 			}
-			
+            else
+            {
+				return false;
+            }
+	
 		}
 
 
@@ -84,18 +54,16 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			UI.PrintArraMatrix(array2D);
 
-			int[] auxArray = { 5, 5, 5 };
-			Console.WriteLine($" {auxArray[0]} {auxArray[1]} {auxArray[2]}");
-
-		            /*
+			int[] auxArray = new int[3];
 			for (int col = 0; col < array2D.GetLength(0); col++)
 			{
-				auxArray[col] = array2D[0,col];
+				auxArray[col] = array2D[0, col];
 			}
-			*/
-            CheckRowsCombinatios(auxArray);
 
-		
+			bool result = CheckCombinations(auxArray);
+			UI.PrintWinLose(result);
 
+
+		}
 	}
 }
