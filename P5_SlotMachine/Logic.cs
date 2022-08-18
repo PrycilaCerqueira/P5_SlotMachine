@@ -64,33 +64,28 @@ namespace P5_SlotMachine
 		{
 			int[] array1D = new int[array2D.GetLength(1)];
 			
-			if (diag == 0)
+			for (int row = 0; row < array2D.GetLength(0); row++)
 			{
-				for (int row = 0; row < array2D.GetLength(0); row++)
+				for (int col = 0; col < array2D.GetLength(1); col++)
 				{
-					for(int col = 0; col < array2D.GetLength(1); col++)
+					if (diag == 0)
 					{
 						if (row == col)
 						{
 							array1D[row] = array2D[row, col];
 						}
 					}
-					
-				}
-			}
-			/*
-			if (diag == 1)
-			{
-				i = 2;
-				for (int item = 0; item < array2D.GetLength(1); item++)
-				{
-					array1D[item] = array1D[i];
-					i = i + 2;
-				}
-			}
-			*/
-			return array1D;
 
+					if (diag == 1)
+					{	
+						if (row == 0 && col == 2 || row == 1 && col == 1 || row == 2 && col == 0)
+                        {
+							array1D[row] = array2D[row, col];
+						}
+					}
+				}
+			}	
+			return array1D;
 		}
 
 

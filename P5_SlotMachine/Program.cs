@@ -43,7 +43,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             }
 
 			//Separates the 2D array into smaller arrays and checks the diagonal array elements similarities
-			for (int diag = 0; diag < 1; diag++)
+			for (int diag = 0; diag < 2; diag++)
             {
 				lineArray = Logic.CreateDiagonal1DArray(array2D, diag);
 				result = Logic.CheckCombinations(lineArray);
