@@ -56,30 +56,34 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			int[] array1D = new int[9];
 			int i = 0;
 
+			//Flattening the array 2D to 1D
+			for (int row = 0; row < array2D.GetLength(0); row++)
+			{
+				for (int col = 0; col < array2D.GetLength(1); col++)
+				{
+					array1D[i++] = array2D[row, col];
+				}
+			}
+
 			if (diag == 0)
 			{
-
-				for (int row = 0; row < array2D.GetLength(0); row++)
-				{
-					for (int col = 0; col < array2D.GetLength(1); col++)
-					{
-						array1D[i++] = array2D[row, col];
-					}
-				}
-
 				i = 0;
-				foreach (int item in array1D)
+				for ( int item = 0; item < array2D.GetLength(1); item++)
 				{
 					auxArray[item] = array1D[i];
-					i = i + 3;
+					i = i + 4;
 				}
-				return auxArray;
-
 			}
 			if (diag == 1)
 			{
-
+				i = 2;
+				for(int item = 0; item < array2D.GetLength(1); item++)
+                {
+					auxArray[item] = array1D[i];
+					i = i + 2;
+				}
 			}
+			return auxArray;
 
 		}
 
@@ -160,6 +164,18 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             }
 
 			//Checks the diagonal array elements similarities
+			for (int diag = 0; diag < 2; diag++)
+            {
+				auxArray = CreateDiagonalAuxArray(array2D, diag);
+				result = CheckCombinations(auxArray);
+
+				if (result == true)
+                {
+					countCash = countCash + 1;
+                }
+
+				UI.PrintWinLose(result, diag, "diagonal");
+            }
 
 
 
