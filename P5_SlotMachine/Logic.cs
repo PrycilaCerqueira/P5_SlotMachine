@@ -62,39 +62,34 @@ namespace P5_SlotMachine
 		/// <returns>One dimension array</returns>
 		public static int[] CreateDiagonal1DArray(int[,] array2D, int diag)
 		{
-			int[] auxArray = new int[array2D.GetLength(1)];
-			int[] array1D = new int[9];
-			int i = 0;
-
-			//Flattening the array 2D to 1D
-			for (int row = 0; row < array2D.GetLength(0); row++)
-			{
-				for (int col = 0; col < array2D.GetLength(1); col++)
-				{
-					array1D[i++] = array2D[row, col];
-				}
-			}
-
+			int[] array1D = new int[array2D.GetLength(1)];
+			
 			if (diag == 0)
 			{
-				i = 0;
-				for (int item = 0; item < array2D.GetLength(1); item++)
+				for (int row = 0; row < array2D.GetLength(0); row++)
 				{
-					auxArray[item] = array1D[i];
-					i = i + 4;
+					for(int col = 0; col < array2D.GetLength(1); col++)
+					{
+						if (row == col)
+						{
+							array1D[row] = array2D[row, col];
+						}
+					}
+					
 				}
 			}
-
+			/*
 			if (diag == 1)
 			{
 				i = 2;
 				for (int item = 0; item < array2D.GetLength(1); item++)
 				{
-					auxArray[item] = array1D[i];
+					array1D[item] = array1D[i];
 					i = i + 2;
 				}
 			}
-			return auxArray;
+			*/
+			return array1D;
 
 		}
 
@@ -120,12 +115,12 @@ namespace P5_SlotMachine
 		/// <summary>
 		/// It calculates the total amount of cash earned in the game
 		/// </summary>
-		/// <param name="resValidation">True or False</param>
+		/// <param name="result">True or False</param>
 		/// <param name="cash">Int cash</param>
 		/// <returns>The accumulated cash</returns>
-		public static int CalcCash(bool resValidation, int cash)
+		public static int CalcCash(bool result, int cash)
 		{
-			if (resValidation == true)
+			if (result == true)
 			{
 				cash = cash + 1;
 			}
