@@ -21,14 +21,14 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 
 			
 			bool result;
-			int[] auxArray;
+			int[] lineArray;
 			int cashSum = 0;
 
 			//Separates the 2D array into smaller arrays and checks the array row elements similarities
 			for (int row = 0; row < array2D.GetLength(0); row++)
             {
-				auxArray = Logic.CreateRowsAuxArray(array2D, row);
-				result = Logic.CheckCombinations(auxArray);
+				lineArray = Logic.CreateRows1DArray(array2D, row);
+				result = Logic.CheckCombinations(lineArray);
 				cashSum = Logic.CalcCash(result, cashSum);
 				UI.PrintWinLose(result, row, "row");
 			}
@@ -36,8 +36,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			//Separates the 2D array into smaller arrays and checks the array column elements similarities
 			for (int col = 0; col <array2D.GetLength(1); col++)
             {
-				auxArray = Logic.CreateColumnsAuxArray(array2D, col);
-				result = Logic.CheckCombinations(auxArray);
+				lineArray = Logic.CreateColumns1DArray(array2D, col);
+				result = Logic.CheckCombinations(lineArray);
 				cashSum = Logic.CalcCash(result, cashSum);
 				UI.PrintWinLose(result, col, "column"); 
             }
@@ -45,8 +45,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			//Separates the 2D array into smaller arrays and checks the diagonal array elements similarities
 			for (int diag = 0; diag < 2; diag++)
             {
-				auxArray = Logic.CreateDiagonalAuxArray(array2D, diag);
-				result = Logic.CheckCombinations(auxArray);
+				lineArray = Logic.CreateDiagonal1DArray(array2D, diag);
+				result = Logic.CheckCombinations(lineArray);
 				cashSum = Logic.CalcCash(result, cashSum);
 				UI.PrintWinLose(result, diag, "diagonal");
             }

@@ -20,47 +20,47 @@ namespace P5_SlotMachine
 		}
 
 		/// <summary>
-		/// It creates a auxiliar 1D array 
+		/// It creates a auxiliary 1D array 
 		/// </summary>
 		/// <param name="array2D">Two dimensions array</param>
 		/// <param name="row">Number of rows</param>
-		/// <returns>1 dimension array</returns>
-		public static int[] CreateRowsAuxArray(int[,] array2D, int row)
+		/// <returns>One dimension array</returns>
+		public static int[] CreateRows1DArray(int[,] array2D, int row)
 		{
-			int[] auxArray = new int[array2D.GetLength(0)];
+			int[] array1D = new int[array2D.GetLength(0)];
 
 			for (int col = 0; col < array2D.GetLength(0); col++)
 			{
-				auxArray[col] = array2D[row, col];
+				array1D[col] = array2D[row, col];
 			}
-			return auxArray;
+			return array1D;
 		}
 
 		/// <summary>
-		/// It creates a auxiliar 1D array 
+		/// It creates a auxiliary 1D array 
 		/// </summary>
 		/// <param name="array2D">Two dimensions array</param>
 		/// <param name="col">Number of columns</param>
-		/// <returns>1 dimension array</returns>
-		public static int[] CreateColumnsAuxArray(int[,] array2D, int col)
+		/// <returns>One dimension array</returns>
+		public static int[] CreateColumns1DArray(int[,] array2D, int col)
 		{
-			int[] auxArray = new int[array2D.GetLength(1)];
+			int[] array1D = new int[array2D.GetLength(1)];
 
 			for (int row = 0; row < array2D.GetLength(1); row++)
 			{
-				auxArray[row] = array2D[row, col];
+				array1D[row] = array2D[row, col];
 			}
-			return auxArray;
+			return array1D;
 
 		}
 
 		/// <summary>
-		/// It creates a auxiliar 1D array 
+		/// It creates a auxiliary 1D array 
 		/// </summary>
 		/// <param name="array2D">Two dimensions array</param>
 		/// <param name="diag">Number of diagonals</param>
-		/// <returns>1 dimension array</returns>
-		public static int[] CreateDiagonalAuxArray(int[,] array2D, int diag)
+		/// <returns>One dimension array</returns>
+		public static int[] CreateDiagonal1DArray(int[,] array2D, int diag)
 		{
 			int[] auxArray = new int[array2D.GetLength(1)];
 			int[] array1D = new int[9];
@@ -102,11 +102,11 @@ namespace P5_SlotMachine
 		/// <summary>
 		/// It verifies if the array elements are the same 
 		/// </summary>
-		/// <param name="auxArray">Int array of 3 elements</param>
+		/// <param name="array1D">Int array of 3 elements</param>
 		/// <returns>True or False</returns>
-		public static bool CheckCombinations(int[] auxArray)
+		public static bool CheckCombinations(int[] array1D)
 		{
-			if (auxArray[0] == auxArray[1] && auxArray[0] == auxArray[2])
+			if (array1D[0] == array1D[1] && array1D[0] == array1D[2])
 			{
 				return true;
 			}
