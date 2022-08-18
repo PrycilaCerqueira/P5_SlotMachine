@@ -50,6 +50,12 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 
         }
 
+		/// <summary>
+		/// It creates a auxiliar 1D array 
+		/// </summary>
+		/// <param name="array2D">Two dimensions array</param>
+		/// <param name="diag">Number of diagonals</param>
+		/// <returns>1 dimension array</returns>
 		static int[] CreateDiagonalAuxArray(int[,] array2D, int diag)
 		{
 			int[] auxArray = new int[array2D.GetLength(1)];
@@ -129,12 +135,12 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			UI.PrintArraMatrix(array2D);
 
-			//Separates the 2D array into smaller arrays 
+			
 			bool result;
 			int[] auxArray;
 			int countCash = 0;
 
-			//Checks the array row elements similarities
+			//Separates the 2D array into smaller arrays and checks the array row elements similarities
 			for (int row = 0; row < array2D.GetLength(0); row++)
             {
 				auxArray = CreateRowsAuxArray(array2D, row);
@@ -149,7 +155,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 
 
-			//Checks the array column elements similarities
+			//Separates the 2D array into smaller arrays and checks the array column elements similarities
 			for (int col = 0; col <array2D.GetLength(1); col++)
             {
 				auxArray = CreateColumnsAuxArray(array2D, col);
@@ -163,7 +169,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 				UI.PrintWinLose(result, col, "column"); 
             }
 
-			//Checks the diagonal array elements similarities
+			//Separates the 2D array into smaller arrays and checks the diagonal array elements similarities
 			for (int diag = 0; diag < 2; diag++)
             {
 				auxArray = CreateDiagonalAuxArray(array2D, diag);
