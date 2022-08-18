@@ -50,6 +50,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 
         }
 
+
+
 		/// <summary>
 		/// It verifies if the array elements are the same 
 		/// </summary>
@@ -91,19 +93,41 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			UI.PrintArraMatrix(array2D);
 
-			//Separates the 2D array into smaller arrays and checks their row elements similarities
+			//Separates the 2D array into smaller arrays 
 			bool result;
 			int[] auxArray;
+			int countCash = 0;
 
+			//Checks the array row elements similarities
 			for (int row = 0; row < array2D.GetLength(0); row++)
             {
 				auxArray = CreateRowsAuxArray(array2D, row);
 				result = CheckCombinations(auxArray);
+				
+				if (result == true)
+                {
+					countCash = countCash + 1;
+                }
+
 				UI.PrintWinLose(result, row, "row");
 			}
 
 
-			
+			//Checks the array column elements similarities
+			for (int col = 0; col <array2D.GetLength(1); col++)
+            {
+				auxArray = CreateColumnsAuxArray(array2D, col);
+				result = CheckCombinations(auxArray);
+
+				if (result == true)
+                {
+					countCash = countCash + 1;
+                }
+
+				UI.PrintWinLose(result, col, "column"); 
+            }
+
+			//Checks the diagonal array elements similarities
 
 
 
