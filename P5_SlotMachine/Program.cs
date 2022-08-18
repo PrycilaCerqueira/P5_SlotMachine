@@ -80,6 +80,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					i = i + 4;
 				}
 			}
+
 			if (diag == 1)
 			{
 				i = 2;
@@ -112,6 +113,20 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	
 		}
 
+		/// <summary>
+		/// It calculates the total amount of cash earned in the game
+		/// </summary>
+		/// <param name="resValidation">True or False</param>
+		/// <param name="cash">Int cash</param>
+		/// <returns>The accumulated cash</returns>
+		static int CountCash(bool resValidation, int cash)
+        {
+			if (resValidation == true)
+			{
+				cash = cash + 1;
+			}
+			return cash;
+		}
 
 
 		static void Main(string[] args)
@@ -138,19 +153,14 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			
 			bool result;
 			int[] auxArray;
-			int countCash = 0;
+			int totalCash = 0;
 
 			//Separates the 2D array into smaller arrays and checks the array row elements similarities
 			for (int row = 0; row < array2D.GetLength(0); row++)
             {
 				auxArray = CreateRowsAuxArray(array2D, row);
 				result = CheckCombinations(auxArray);
-				
-				if (result == true)
-                {
-					countCash = countCash + 1;
-                }
-
+				totalCash = CountCash(result, totalCash);
 				UI.PrintWinLose(result, row, "row");
 			}
 
@@ -160,12 +170,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             {
 				auxArray = CreateColumnsAuxArray(array2D, col);
 				result = CheckCombinations(auxArray);
-
-				if (result == true)
-                {
-					countCash = countCash + 1;
-                }
-
+				totalCash = CountCash(result, totalCash);
 				UI.PrintWinLose(result, col, "column"); 
             }
 
@@ -174,12 +179,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             {
 				auxArray = CreateDiagonalAuxArray(array2D, diag);
 				result = CheckCombinations(auxArray);
-
-				if (result == true)
-                {
-					countCash = countCash + 1;
-                }
-
+				totalCash = CountCash(result, totalCash);
 				UI.PrintWinLose(result, diag, "diagonal");
             }
 
