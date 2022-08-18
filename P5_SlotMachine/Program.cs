@@ -50,6 +50,38 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 
         }
 
+		static int[] CreateDiagonalAuxArray(int[,] array2D, int diag)
+		{
+			int[] auxArray = new int[array2D.GetLength(1)];
+			int[] array1D = new int[9];
+			int i = 0;
+
+			if (diag == 0)
+			{
+
+				for (int row = 0; row < array2D.GetLength(0); row++)
+				{
+					for (int col = 0; col < array2D.GetLength(1); col++)
+					{
+						array1D[i++] = array2D[row, col];
+					}
+				}
+
+				i = 0;
+				foreach (int item in array1D)
+				{
+					auxArray[item] = array1D[i];
+					i = i + 3;
+				}
+				return auxArray;
+
+			}
+			if (diag == 1)
+			{
+
+			}
+
+		}
 
 
 		/// <summary>
