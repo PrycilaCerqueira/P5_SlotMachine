@@ -8,6 +8,9 @@ namespace P5_SlotMachine
 {
     public class UI
     {
+        /// <summary>
+        /// It prints the game headline and its first instructions
+        /// </summary>
         public static void PrintGame1stInstructions()
         {
             Console.WriteLine("***** Slot Machine Game *****\n");
@@ -42,11 +45,11 @@ namespace P5_SlotMachine
         {
             if (resValidation == true)
             {
-                Console.WriteLine($"All numbers are the same in {rowCol} {index+1}.");
+                Console.Write($"\nAll numbers are the same in {rowCol} {index+1}.");
             }
             else
             {
-                Console.WriteLine($"Not all numbers are the same in {rowCol} {index+1}.");
+                Console.Write($"\nNot all numbers are the same in {rowCol} {index+1}.");
             }
 
         }
