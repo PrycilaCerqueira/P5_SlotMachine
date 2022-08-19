@@ -6,6 +6,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
+			UI.PrintGame1stInstructions();
+
 			//Defines and initiates an array 2D - 3rows, 3colums.
 			int[,] array2D = new int[3,3];
 
