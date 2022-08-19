@@ -11,11 +11,14 @@ namespace P5_SlotMachine
         /// <summary>
         /// It prints the game headline and its first instructions
         /// </summary>
-        public static void PrintGame1stInstructions()
+        public static int PrintGame1stInstructions()
         {
             Console.WriteLine("***** Slot Machine Game *****\n");
             Console.WriteLine("Game rules:\n-To initiate the game you need to make a bet.\n-Each line costs $1 and you can bet up to $3 at once.");
             Console.WriteLine("-You win $1 for each line with the same sequence of numbers (e.g. 1 1 1).\n-The number sequence can be in a row, column, and diagonal.\n");
+            Console.Write("How much for your first bet? Choose $1, $2 or $3.\nEnter: $");
+            int bet = Int32.Parse(Console.ReadLine());
+            return bet;
         }
 
 
