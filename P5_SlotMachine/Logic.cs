@@ -9,17 +9,6 @@ namespace P5_SlotMachine
     public class Logic
     {
 		/// <summary>
-		/// It generates a random number
-		/// </summary>
-		/// <returns>Int number from 1 to 9</returns>
-		public static int GetRandomNumber()
-		{
-			Random rnd = new Random();
-			int num = rnd.Next(1, 10);
-			return num;
-		}
-
-		/// <summary>
 		/// Nested loops to fill up the array with random numbers
 		/// </summary>
 		/// <param name="array2D">Array [n,n]</param>
@@ -48,9 +37,9 @@ namespace P5_SlotMachine
 		/// <returns>One dimension array</returns>
 		public static int[] CreateRows1DArray(int[,] array2D, int row)
 		{
-			int[] array1D = new int[array2D.GetLength(0)];
+			int[] array1D = new int[array2D.GetLength(1)];
 
-			for (int col = 0; col < array2D.GetLength(0); col++)
+			for (int col = 0; col < array2D.GetLength(1); col++)
 			{
 				array1D[col] = array2D[row, col];
 			}
