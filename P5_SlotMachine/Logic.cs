@@ -26,11 +26,15 @@ namespace P5_SlotMachine
 		/// <returns> Filled up array</returns>
 		public static int[,] FillUp2DArray(int[,] array2D)
         {
+			
 			for (int row = 0; row < array2D.GetLength(0); row++)
 			{
 				for (int column = 0; column < array2D.GetLength(1); column++)
 				{
-					array2D[row, column] = GetRandomNumber(); //assigns a rdn number to each array item
+					Random rnd = new Random();
+					int num = rnd.Next(1, 10);
+
+					array2D[row, column] = num; //assigns a rdn number to each array item
 				}
 			}
 			return array2D;
