@@ -20,6 +20,23 @@ namespace P5_SlotMachine
 		}
 
 		/// <summary>
+		/// Nested loops to fill up the array with random numbers
+		/// </summary>
+		/// <param name="array2D">Array [n,n]</param>
+		/// <returns> Filled up array</returns>
+		public static int[,] FillUp2DArray(int[,] array2D)
+        {
+			for (int row = 0; row < array2D.GetLength(0); row++)
+			{
+				for (int column = 0; column < array2D.GetLength(1); column++)
+				{
+					array2D[row, column] = GetRandomNumber(); //assigns a rdn number to each array item
+				}
+			}
+			return array2D;
+		}
+
+		/// <summary>
 		/// It creates a auxiliary 1D array 
 		/// </summary>
 		/// <param name="array2D">Two dimensions array</param>

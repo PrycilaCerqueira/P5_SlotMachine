@@ -7,22 +7,13 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 		static void Main(string[] args)
 		{
 			int bet = UI.PrintGame1stInstructions();
-
-
+			
 			//Defines and initiates an array 2D - 3rows, 3colums.
-			int[,] array2D = new int[3, 3];
-
-			//Nested loops to fill up the array with random numbers
-			for (int row = 0; row < array2D.GetLength(0); row++)
-			{
-				for (int column = 0; column < array2D.GetLength(1); column++)
-				{
-					array2D[row, column] = Logic.GetRandomNumber(); //assigns a rdn number to each array item
-				}
-			}
+			int[,] array2D = new int[bet, 3];
+			Logic.FillUp2DArray(array2D);
 			UI.PrintArraMatrix(array2D);
 
-
+			/*
 			bool result;
 			int[] lineArray;
 			int cashSum = 0;
@@ -53,9 +44,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 				cashSum = Logic.CalcCash(result, cashSum);
 				UI.PrintWinLose(result, diag, "diagonal");
 			}
+			*/
 
-            }
-
-		}
+        }
 	}
 }
