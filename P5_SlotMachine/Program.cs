@@ -18,6 +18,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			int[] lineArray;
 			int cashSum = 0;
 
+			/*TODO: CashCount to replay or not
+					Improve WinLose print messages
+					Imput error verifications
+			*/
 			switch (bet)
 			{
 				case 1:
