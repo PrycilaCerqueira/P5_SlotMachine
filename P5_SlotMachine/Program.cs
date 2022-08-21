@@ -9,43 +9,58 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			UI.PrintGame1stInstructions();
 			int bet = UI.PrintMakeYourBet();
 
-			int[,] array2D = new int[bet, 3]; //Defines and initiates an array 2D - 3rows, 3colums.
+			int[,] array2D = new int[bet, 3]; //Defines and initiates an array 2D - 1 to 3 rows and 3 colums.
 			Logic.FillUp2DArray(array2D);
-			UI.PrintArraMatrix(array2D);
+			UI.PrintArrayMatrix(array2D);
 
-			
+
 			bool result;
 			int[] lineArray;
 			int cashSum = 0;
 
-			//Separates the 2D array into smaller arrays and checks the array row elements similarities
-			for (int row = 0; row < array2D.GetLength(0); row++)
+			switch (bet)
 			{
-				lineArray = Logic.CreateRows1DArray(array2D, row);
-				result = Logic.CheckCombinations(lineArray);
-				cashSum = Logic.CalcCash(result, cashSum);
-				UI.PrintWinLose(result, row, "row");
+				case 1:
+				case 2:
+					for (int rows = 0; rows < array2D.GetLength(0); rows++)
+					{
+						lineArray = Logic.CreateRows1DArray(array2D, rows);
+						result = Logic.CheckCombinations(lineArray);
+						//cashSum = Logic.CalcCash(result, cashSum);
+						UI.PrintWinLose(result, rows, "row");
+					}
+					break;
+
+				case 3:
+					//Separates the 2D array into smaller arrays and checks the array row elements similarities
+					for (int rows = 0; rows < array2D.GetLength(0); rows++)
+					{
+						lineArray = Logic.CreateRows1DArray(array2D, rows);
+						result = Logic.CheckCombinations(lineArray);
+						//cashSum = Logic.CalcCash(result, cashSum);
+						UI.PrintWinLose(result, rows, "row");
+					}
+
+					//Separates the 2D array into smaller arrays and checks the array column elements similarities
+					for (int columns = 0; columns < array2D.GetLength(1); columns++)
+					{
+						lineArray = Logic.CreateColumns1DArray(array2D, columns);
+						result = Logic.CheckCombinations(lineArray);
+						//cashSum = Logic.CalcCash(result, cashSum);
+						UI.PrintWinLose(result, columns, "column");
+					}
+
+					//Separates the 2D array into smaller arrays and checks the diagonal array elements similarities
+					for (int diagonals = 0; diagonals < 2; diagonals++)
+					{
+						lineArray = Logic.CreateDiagonal1DArray(array2D, diagonals);
+						result = Logic.CheckCombinations(lineArray);
+						//cashSum = Logic.CalcCash(result, cashSum);
+						UI.PrintWinLose(result, diagonals, "diagonal");
+					}
+					break;
 			}
 
-			//Separates the 2D array into smaller arrays and checks the array column elements similarities
-			for (int col = 0; col < array2D.GetLength(1); col++)
-			{
-				lineArray = Logic.CreateColumns1DArray(array2D, col);
-				result = Logic.CheckCombinations(lineArray);
-				cashSum = Logic.CalcCash(result, cashSum);
-				UI.PrintWinLose(result, col, "column");
-			}
-
-			//Separates the 2D array into smaller arrays and checks the diagonal array elements similarities
-			for (int diag = 0; diag < 2; diag++)
-			{
-				lineArray = Logic.CreateDiagonal1DArray(array2D, diag);
-				result = Logic.CheckCombinations(lineArray);
-				cashSum = Logic.CalcCash(result, cashSum);
-				UI.PrintWinLose(result, diag, "diagonal");
-			}
-			
-
-        }
+		}
 	}
 }

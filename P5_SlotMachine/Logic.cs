@@ -91,11 +91,11 @@ namespace P5_SlotMachine
 
 			if (diag == 1)
 			{
-				for (int row = 0; row < array2D.GetLength(0); row++)
+				for (int row = array2D.GetLength(0) - 1; row >= 0 ; row--)
 				{
-					for (int col = 0; col < array2D.GetLength(1); col++)
+					for (int col = array2D.GetLength(1) - 1; col >= 0; col--)
 					{
-						if (row == i)
+						if (col == i)
 						{
 							array1D[i++] = array2D[row, col];
 						}

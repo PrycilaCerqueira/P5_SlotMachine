@@ -15,18 +15,22 @@ namespace P5_SlotMachine
         {
             Console.WriteLine("***** Slot Machine Game *****\n");
             Console.WriteLine("Game rules:\n-To initiate the game you need to make a bet.\n-Each line costs $1 and you can bet up to $3 at once.");
-            Console.WriteLine("-You win $1 for each line with the same sequence of numbers (e.g. 1 1 1).\n-The number sequence can be in a row, column, and diagonal.\n");
+            Console.WriteLine("-You win $1 for each line with THREE identical numbers in sequence (e.g. 1 1 1).\n-The number sequence can be in a row, column, and diagonal.\n");
                         
         }
 
+        /// <summary>
+        /// It asks the player how much they would like to bet 
+        /// </summary>
+        /// <returns> The bet amount (int)</returns>
         public static int PrintMakeYourBet()
         {
-            Console.Write("How much for your first bet? Choose $1, $2 or $3.\n");
+            Console.Write("How much would you like to bet? Choose $1, $2 or $3.\n");
             int bet;
 
             while (true)
             {
-                Console.Write("Enter: $");
+                Console.Write("Enter $ ");
                 bet = Int32.Parse(Console.ReadLine());
 
                 if (bet > 0 && bet < 4)
@@ -35,7 +39,7 @@ namespace P5_SlotMachine
                 }
                 else 
                 {
-                    Console.WriteLine($"${bet} is a invalid entry value.");
+                    Console.WriteLine($"${bet} is a invalid entry value.\n");
                 }
                 
             }
@@ -45,8 +49,10 @@ namespace P5_SlotMachine
         /// Prints an array in a 3x3 matrix shape
         /// </summary>
         /// <param name="array2D">Integer array [3,3] </param>
-        public static void PrintArraMatrix(int[,] array2D)
+        public static void PrintArrayMatrix(int[,] array2D)
         {
+            Console.WriteLine();// Skips a line
+
             for (int row = 0; row < array2D.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
                 for (int column = 0; column < array2D.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
