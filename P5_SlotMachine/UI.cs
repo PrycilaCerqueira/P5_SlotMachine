@@ -23,7 +23,7 @@ namespace P5_SlotMachine
         /// It asks the player how much they would like to bet 
         /// </summary>
         /// <returns> The bet amount (int)</returns>
-        public static int PrintMakeYourBet()
+        public static int MakeYourBet()
         {
             Console.Write("How much would you like to bet? Choose $1, $2 or $3.\n");
             int bet;
@@ -80,6 +80,19 @@ namespace P5_SlotMachine
                 Console.Write($"\nNot all numbers are the same in {rowCol} {index+1}.");
             }
 
+        }
+
+        public static bool AskToContinueGame(int cash)
+        {
+            Console.WriteLine($"You have accumulated ${cash}.");
+
+            do
+            {
+                Console.WriteLine("Would you like to make a new bet? Y/N");
+
+            } while (Console.ReadKey().Key != ConsoleKey.Y);
+
+            return true;
         }
     }
 
