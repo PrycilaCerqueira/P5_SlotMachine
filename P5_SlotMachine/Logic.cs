@@ -86,7 +86,6 @@ namespace P5_SlotMachine
                     {
 						array1D[row] = array2D[row, col];
                     }
-
 				}
 			}
 			
