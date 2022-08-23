@@ -73,36 +73,23 @@ namespace P5_SlotMachine
 		public static int[] CreateDiagonal1DArray(int[,] array2D, int diag)
 		{
 			int[] array1D = new int[array2D.GetLength(1)];
-			int i = 0;
-							
-			if (diag == 0)
+								
+			for (int row = 0; row < array2D.GetLength(0); row++)
 			{
-				for (int row = 0; row < array2D.GetLength(0); row++)
-				{
-					for (int col = 0; col < array2D.GetLength(1); col++)
-					{ 
-						if (row == col)
-						{
-							array1D[row] = array2D[row, col];
-						}
-					}
-				}
-			}
-
-			if (diag == 1)
-			{
-				for (int row = array2D.GetLength(0) - 1; row >= 0 ; row--)
-				{
-					for (int col = array2D.GetLength(1) - 1; col >= 0; col--)
+				for (int col = 0; col < array2D.GetLength(1); col++)
+				{ 
+					if (diag == 0 && row == col)
 					{
-						if (col == i)
-						{
-							array1D[i++] = array2D[row, col];
-						}
+						array1D[row] = array2D[row, col];
 					}
+					else if (diag == 1 && row + col == array2D.GetLength(1) - 1)
+                    {
+						array1D[row] = array2D[row, col];
+                    }
+
 				}
 			}
-
+			
 			return array1D;
 		}
 
