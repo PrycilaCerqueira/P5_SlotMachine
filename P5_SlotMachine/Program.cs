@@ -7,7 +7,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 		static void Main(string[] args)
 		{
 			//TODO: Imput error verifications
-			//Bet can be up to $8. Devide bet to accept up to $3 every play. 
+			//Verify if the player is enetring a number and not a letter
+
 			int bet = 0;
 			UI.PrintGame1stInstructions();
 			bet = UI.MakeYourBet(bet);
@@ -25,7 +26,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 								
 				if (yesNo == true)
                 {		
-					if (cashSum > 4)
+					if (cashSum > 4) //Calculates the new bet in case the player won more than $4. The limit per round is $3. 
 					{
 						int newBet = 0;
 						newBet = UI.MakeYourBet(newBet);
