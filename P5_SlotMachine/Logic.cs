@@ -21,7 +21,7 @@ namespace P5_SlotMachine
 				for (int column = 0; column < array2D.GetLength(1); column++)
 				{
 					Random rnd = new Random();
-					int num = rnd.Next(1, 5);
+					int num = rnd.Next(1, 4);
 
 					array2D[row, column] = num; //assigns a rdn number to each array item
 				}

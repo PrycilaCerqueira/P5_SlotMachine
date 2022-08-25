@@ -23,10 +23,10 @@ namespace P5_SlotMachine
         /// It asks the player how much they would like to bet 
         /// </summary>
         /// <returns> The bet amount (int)</returns>
-        public static int MakeYourBet()
+        public static int MakeYourBet(int bet)
         {
             Console.Write("How much would you like to bet? Choose $1, $2 or $3.\n");
-            int bet = 0;
+            //int bet = 0;
 
             while (true)
             {
@@ -73,7 +73,7 @@ namespace P5_SlotMachine
         {
             if (cashSum > 0)
             {
-                Console.WriteLine($"You WON!!!\nTotal ${cashSum}");
+                Console.WriteLine($"\nYou WON!!!\nTotal ${cashSum}");
             }
             else
             {
@@ -82,18 +82,21 @@ namespace P5_SlotMachine
 
         }
 
-        public static bool AskToContinueGame(int cashSum)
+        public static bool AskToContinueGame()
         {
-            Console.WriteLine("Would you like to make a new bet? Y/N\n Enter: ");
+            bool yesNo;
+            Console.Write("\nWould you like to make a new bet? Y/N\nEnter: ");
 
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
-                return true;
+                yesNo = true;
             }
             else
             {
-                return false;
+                yesNo = false;
             }
+            Console.WriteLine();
+            return yesNo;
                         
         }
     }

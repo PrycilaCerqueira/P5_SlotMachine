@@ -7,9 +7,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 		static void Main(string[] args)
 		{
 			//TODO: Imput error verifications
-			
+			//Bet can be up to $8. Devide bet to accept up to $3 every play. 
+			int bet = 0;
 			UI.PrintGame1stInstructions();
-			int bet = UI.MakeYourBet();
+			bet = UI.MakeYourBet(bet);
 
 			int[,] array2D = new int[bet, 3]; //Defines and initiates an array 2D - 1 to 3 rows and 3 colums.
  			Logic.FillUp2DArray(array2D);
@@ -20,11 +21,22 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			while (cashSum != 0)
 			{
 				UI.PrintWinLose(cashSum);
-				bool yesNo = UI.AskToContinueGame(cashSum);
-
+				bool yesNo = UI.AskToContinueGame();
+								
 				if (yesNo == true)
-                {
-					bet = cashSum;
+                {		
+					if (cashSum > 4)
+					{
+						int newBet = 0;
+						newBet = UI.MakeYourBet(newBet);
+						cashSum = cashSum - newBet;
+						bet = newBet;
+					}
+                    else
+                    {
+						bet = cashSum;
+					}
+			
 					array2D = new int[bet, 3];
 					Logic.FillUp2DArray(array2D);
 					UI.PrintArrayMatrix(array2D);
