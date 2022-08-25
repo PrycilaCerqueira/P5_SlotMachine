@@ -36,6 +36,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
                     else
                     {
 						bet = cashSum;
+						cashSum = 0;
 					}
 			
 					array2D = new int[bet, 3];
