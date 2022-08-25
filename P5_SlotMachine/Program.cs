@@ -19,10 +19,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			UI.PrintArrayMatrix(array2D);
 
 			int cashSum = Logic.CheckSimilarElements(bet, array2D);
-			UI.PrintWinLose(cashSum);
-
+			
 			while (cashSum != 0)
-            {
+			{
+				UI.PrintWinLose(cashSum);
 				bool yesNo = UI.AskToContinueGame(cashSum);
 
 				if (yesNo == true)
@@ -32,7 +32,11 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					Logic.FillUp2DArray(array2D);
 					UI.PrintArrayMatrix(array2D);
 					cashSum = Logic.CheckSimilarElements(bet, array2D);
-
+				}
+				else
+				{
+					UI.PrintWinLose(cashSum);
+					Environment.Exit(0);
                 }
 			}
 			UI.PrintWinLose(cashSum);

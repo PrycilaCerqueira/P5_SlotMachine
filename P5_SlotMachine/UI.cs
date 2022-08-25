@@ -88,12 +88,12 @@ namespace P5_SlotMachine
 
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
-                PrintWinLose(cashSum);
+                //PrintWinLose(cashSum);
                 return true;
             }
             else
             {
-                PrintWinLose(cashSum);
+                //PrintWinLose(cashSum);
                 return false;
             }
                         
