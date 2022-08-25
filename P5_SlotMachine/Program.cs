@@ -41,7 +41,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					array2D = new int[bet, 3];
 					Logic.FillUp2DArray(array2D);
 					UI.PrintArrayMatrix(array2D);
-					cashSum = Logic.CheckSimilarElements(bet, array2D);
+					int cash = Logic.CheckSimilarElements(bet, array2D);
+					
+					//TODO: If bet = cashSum, I cannot make the calc below
+					cashSum = cashSum + cash;
 				}
 				else
 				{
