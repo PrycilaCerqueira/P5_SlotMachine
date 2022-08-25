@@ -127,6 +127,44 @@ namespace P5_SlotMachine
 		}
 
 
+		public static int CheckSimilarElements(int bet, int[,] array2D)
+        {
+			bool result;
+			int[] lineArray = new int[3];
+			int cashSum = 0;
+
+			//Check ROWS elements similarities
+			for (int rows = 0; rows < bet; rows++)
+			{
+				lineArray = CreateRows1DArray(array2D, rows);
+				result = CheckCombinations(lineArray);
+				cashSum = CalcCash(result, cashSum);
+				//UI.PrintWinLose(result, rows, "row");
+			}
+
+			if (bet > 2)
+			{
+				//Check COLUMNS elements similarities
+				for (int columns = 0; columns < array2D.GetLength(1); columns++)
+				{
+					lineArray = CreateColumns1DArray(array2D, columns);
+					result = CheckCombinations(lineArray);
+					cashSum = CalcCash(result, cashSum);
+					//UI.PrintWinLose(result, columns, "column");
+				}
+
+				//Check DIAGONAL array elements similarities
+				for (int diagonals = 0; diagonals < 2; diagonals++)
+				{
+					lineArray = CreateDiagonal1DArray(array2D, diagonals);
+					result = CheckCombinations(lineArray);
+					cashSum = CalcCash(result, cashSum);
+					//UI.PrintWinLose(result, diagonals, "diagonal");
+				}
+			}
+			return cashSum;
+
+		}
 
 	}
 

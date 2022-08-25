@@ -26,7 +26,7 @@ namespace P5_SlotMachine
         public static int MakeYourBet()
         {
             Console.Write("How much would you like to bet? Choose $1, $2 or $3.\n");
-            int bet;
+            int bet = 0;
 
             while (true)
             {
@@ -82,17 +82,19 @@ namespace P5_SlotMachine
 
         }
 
-        public static bool AskToContinueGame(int cash)
+        public static bool AskToContinueGame(int cashSum)
         {
-            Console.WriteLine($"You have accumulated ${cash}.");
+            Console.WriteLine($"You have accumulated ${cashSum}.");
+            Console.WriteLine("Would you like to make a new bet? Y/N");
 
-            do
+            if (Console.ReadKey().Key != ConsoleKey.Y)
             {
-                Console.WriteLine("Would you like to make a new bet? Y/N");
-
-            } while (Console.ReadKey().Key != ConsoleKey.Y);
-
+                Console.WriteLine("See you next time!");
+                Environment.Exit(0);
+            }                       
             return true;
+           
+            
         }
     }
 
