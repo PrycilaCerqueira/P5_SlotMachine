@@ -19,7 +19,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			UI.PrintArrayMatrix(array2D);
 
 			int cashSum = Logic.CheckSimilarElements(bet, array2D);
-
+			UI.PrintWinLose(cashSum);
 
 			while (cashSum != 0)
             {
@@ -34,9 +34,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					cashSum = Logic.CheckSimilarElements(bet, array2D);
 
                 }
-				UI.PrintWinLose(result, diagonals, "diagonal");
 			}
-			
+			UI.PrintWinLose(cashSum);
 
 		}
 	}

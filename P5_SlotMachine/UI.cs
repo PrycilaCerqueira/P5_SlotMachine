@@ -69,32 +69,34 @@ namespace P5_SlotMachine
         /// <param name="resValidation">True or False</param>
         /// <param name="index">Index number</param>
         /// <param name="rowCol">Row or Column words</param>
-        public static void PrintWinLose(bool resValidation, int index, string rowCol)
+        public static void PrintWinLose(int cashSum)
         {
-            if (resValidation == true)
+            if (cashSum > 0)
             {
-                Console.Write($"\nAll numbers are the same in {rowCol} {index+1}.");
+                Console.WriteLine($"You WON!!!\nTotal ${cashSum}");
             }
             else
             {
-                Console.Write($"\nNot all numbers are the same in {rowCol} {index+1}.");
+                Console.WriteLine($"\nYou LOSE!!!\nTotal ${cashSum}");
             }
 
         }
 
         public static bool AskToContinueGame(int cashSum)
         {
-            Console.WriteLine($"You have accumulated ${cashSum}.");
             Console.WriteLine("Would you like to make a new bet? Y/N");
 
-            if (Console.ReadKey().Key != ConsoleKey.Y)
+            if (Console.ReadKey().Key == ConsoleKey.Y)
             {
-                Console.WriteLine("See you next time!");
-                Environment.Exit(0);
-            }                       
-            return true;
-           
-            
+                PrintWinLose(cashSum);
+                return true;
+            }
+            else
+            {
+                PrintWinLose(cashSum);
+                return false;
+            }
+                        
         }
     }
 
