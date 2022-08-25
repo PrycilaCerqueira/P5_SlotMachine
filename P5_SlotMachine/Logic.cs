@@ -98,7 +98,7 @@ namespace P5_SlotMachine
 		/// </summary>
 		/// <param name="array1D">Int array of 3 elements</param>
 		/// <returns>True or False</returns>
-		public static bool CheckCombinations(int[] array1D)
+		public static bool ConfirmEqualityOfElements(int[] array1D)
 		{
 			if (array1D[0] == array1D[1] && array1D[0] == array1D[2])
 			{
@@ -126,7 +126,12 @@ namespace P5_SlotMachine
 			return cash;
 		}
 
-
+		/// <summary>
+		/// It checks the arrays elements similarities
+		/// </summary>
+		/// <param name="bet">Int bet </param>
+		/// <param name="array2D">Array 2D</param>
+		/// <returns>Int cashSum</returns>
 		public static int CheckSimilarElements(int bet, int[,] array2D)
         {
 			bool result;
@@ -137,9 +142,8 @@ namespace P5_SlotMachine
 			for (int rows = 0; rows < bet; rows++)
 			{
 				lineArray = CreateRows1DArray(array2D, rows);
-				result = CheckCombinations(lineArray);
+				result = ConfirmEqualityOfElements(lineArray);
 				cashSum = CalcCash(result, cashSum);
-				//UI.PrintWinLose(result, rows, "row");
 			}
 
 			if (bet > 2)
@@ -148,18 +152,16 @@ namespace P5_SlotMachine
 				for (int columns = 0; columns < array2D.GetLength(1); columns++)
 				{
 					lineArray = CreateColumns1DArray(array2D, columns);
-					result = CheckCombinations(lineArray);
+					result = ConfirmEqualityOfElements(lineArray);
 					cashSum = CalcCash(result, cashSum);
-					//UI.PrintWinLose(result, columns, "column");
 				}
 
 				//Check DIAGONAL array elements similarities
 				for (int diagonals = 0; diagonals < 2; diagonals++)
 				{
 					lineArray = CreateDiagonal1DArray(array2D, diagonals);
-					result = CheckCombinations(lineArray);
+					result = ConfirmEqualityOfElements(lineArray);
 					cashSum = CalcCash(result, cashSum);
-					//UI.PrintWinLose(result, diagonals, "diagonal");
 				}
 			}
 			return cashSum;

@@ -6,11 +6,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
-			/*TODO: CashCount to replay or not
-					Improve WinLose print messages
-					Imput error verifications
-			*/
-
+			//TODO: Imput error verifications
+			
 			UI.PrintGame1stInstructions();
 			int bet = UI.MakeYourBet();
 

@@ -84,16 +84,14 @@ namespace P5_SlotMachine
 
         public static bool AskToContinueGame(int cashSum)
         {
-            Console.WriteLine("Would you like to make a new bet? Y/N");
+            Console.WriteLine("Would you like to make a new bet? Y/N\n Enter: ");
 
             if (Console.ReadKey().Key == ConsoleKey.Y)
             {
-                //PrintWinLose(cashSum);
                 return true;
             }
             else
             {
-                //PrintWinLose(cashSum);
                 return false;
             }
                         
