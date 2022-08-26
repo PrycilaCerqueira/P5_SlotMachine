@@ -42,8 +42,8 @@ namespace P5_SlotMachine
                     Console.WriteLine($"'{input.ToUpper()}' is a invalid entry value.\n");
                     continue;
                 }
-                if (bet < 1 && bet > 4)
-                {
+                if (bet < 1 || bet > 3)
+                {              
                     Console.WriteLine($"${bet} is a invalid value.\n");
                     continue;
                 }
