@@ -26,23 +26,31 @@ namespace P5_SlotMachine
         public static int MakeYourBet(int bet)
         {
             Console.Write("\nHow much would you like to bet? Choose $1, $2 or $3.\n");
-            //int bet = 0;
-
+            
             while (true)
             {
                 Console.Write("Enter $ ");
-                bet = Int32.Parse(Console.ReadLine());
-
-                if (bet > 0 && bet < 4)
-                {
-                    return bet;
-                }
-                else 
-                {
-                    Console.WriteLine($"${bet} is a invalid entry value.\n");
-                }
+                string input = Console.ReadLine();
                 
+                if (input.Length > 1)
+                {
+                    Console.WriteLine("Enter only one digit.\n");
+                    continue;
+                }
+                if (!int.TryParse(input, out bet))
+                {
+                    Console.WriteLine($"'{input.ToUpper()}' is a invalid entry value.\n");
+                    continue;
+                }
+                if (bet < 1 && bet > 4)
+                {
+                    Console.WriteLine($"${bet} is a invalid value.\n");
+                    continue;
+                }
+                break;
             }
+            return bet;
+
         }
 
         /// <summary>
