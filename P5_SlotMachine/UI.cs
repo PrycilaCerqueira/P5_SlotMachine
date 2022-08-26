@@ -15,7 +15,7 @@ namespace P5_SlotMachine
         {
             Console.WriteLine("***** Slot Machine Game *****\n");
             Console.WriteLine("Game rules:\n-To initiate the game you need to make a bet.\n-Each line costs $1 and you can bet up to $3 at once.");
-            Console.WriteLine("-You win $1 for each line with THREE identical numbers in sequence (e.g. 1 1 1).\n-The number sequence can be in a row, column, and diagonal.\n");
+            Console.WriteLine("-You win $1 for each line with THREE identical numbers in sequence (e.g. 1 1 1).\n-The number sequence can be in a row, column, and diagonal.");
                         
         }
 
@@ -25,7 +25,7 @@ namespace P5_SlotMachine
         /// <returns> The bet amount (int)</returns>
         public static int MakeYourBet(int bet)
         {
-            Console.Write("How much would you like to bet? Choose $1, $2 or $3.\n");
+            Console.Write("\nHow much would you like to bet? Choose $1, $2 or $3.\n");
             //int bet = 0;
 
             while (true)
@@ -52,7 +52,6 @@ namespace P5_SlotMachine
         public static void PrintArrayMatrix(int[,] array2D)
         {
             Console.WriteLine();// Skips a line
-
             for (int row = 0; row < array2D.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
                 for (int column = 0; column < array2D.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
