@@ -6,9 +6,6 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
-			//TODO: Imput error verifications
-			//Verify if the player is enetring a number and not a letter
-
 			int bet = 0;
 			UI.PrintGame1stInstructions();
 			bet = UI.MakeYourBet(bet);

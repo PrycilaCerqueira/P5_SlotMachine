@@ -89,6 +89,10 @@ namespace P5_SlotMachine
 
         }
 
+        /// <summary>
+        /// It asks the played whether they want to continue or not
+        /// </summary>
+        /// <returns>True/False</returns>
         public static bool AskToContinueGame()
         {
             bool yesNo;
