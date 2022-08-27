@@ -30,6 +30,21 @@ namespace P5_SlotMachine
 			return grid;
 		}
 
+		public static int[,] MoveGridElements(int[,] grid)
+        {
+			int[,] newGrid = new int[grid.GetLength(0), grid.GetLength(1)];
+
+			for (int column = 0; column < grid.GetLength(1); column++)
+			{
+				for (int row = 0; row < grid.GetLength(0); row++)
+				{
+					if ()
+				}
+			}
+
+			return newGrid;
+        }
+
 		/// <summary>
 		/// It creates a auxiliary 1D array 
 		/// </summary>
