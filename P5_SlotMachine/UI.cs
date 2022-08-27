@@ -59,12 +59,25 @@ namespace P5_SlotMachine
         /// <param name="grid">Integer array [3,3] </param>
         public static void PrintGrid(int[,] grid)
         {
+            string[,] stringGrid = new string [grid.GetLength(0), grid.GetLength(1)];
+
             Console.WriteLine();// Skips a line
             for (int row = 0; row < grid.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
                 for (int column = 0; column < grid.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
                 {
-                    Console.Write($"  {grid[row, column]}"); //Print the numbers in line sepated by a space
+                    stringGrid[row, column] = grid[row, column].ToString();
+
+                    if (grid[row, column] == 10)
+                    {
+                        stringGrid[row, column] = @"/\"; //rocket pointing up
+                    }
+                    if (grid[row, column] == 11)
+                    {
+                        stringGrid[row, column] = @"\/"; //rockect pointing down
+                    }
+                    
+                    Console.Write($"  {stringGrid[row, column]}"); //Print the numbers in line sepated by a space
                 }
                 Console.WriteLine();//Skips a line to print another set of numbers in line on the next iteraction
             }
