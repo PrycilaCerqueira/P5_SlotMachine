@@ -13,11 +13,11 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
  			Logic.FillUpGrid(grid);
 			UI.PrintGrid(grid);
 
-			int cashSum = Logic.CheckGridElementSimilarities(bet, grid);
+			int cashSum = Logic.CheckGridSimilarElements(bet, grid);
 			
 			while (cashSum != 0)
 			{
-				UI.PrintWinLose(cashSum);
+				UI.PrintWinLoseMsg(cashSum);
 				bool continuePlay = UI.AskToContinueGame();
 								
 				if (continuePlay == true)
@@ -37,16 +37,16 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					grid = new int[bet, 3];
 					Logic.FillUpGrid(grid);
 					UI.PrintGrid(grid);
-					int cash = Logic.CheckGridElementSimilarities(bet, grid);
+					int cash = Logic.CheckGridSimilarElements(bet, grid);
 					cashSum = cashSum + cash;
 				}
 				else
 				{
-					UI.PrintWinLose(cashSum);
+					UI.PrintWinLoseMsg(cashSum);
 					Environment.Exit(0);
                 }
 			}
-			UI.PrintWinLose(cashSum);
+			UI.PrintWinLoseMsg(cashSum);
 
 		}
 	}

@@ -76,7 +76,7 @@ namespace P5_SlotMachine
         /// <param name="resValidation">True or False</param>
         /// <param name="index">Index number</param>
         /// <param name="rowCol">Row or Column words</param>
-        public static void PrintWinLose(int cashSum)
+        public static void PrintWinLoseMsg(int cashSum)
         {
             if (cashSum > 0)
             {
