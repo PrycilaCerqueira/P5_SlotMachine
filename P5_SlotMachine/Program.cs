@@ -6,6 +6,14 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
+
+			/*
+			 * TODO: 
+			 * Make it so that rows can have a rocket ship icon which can alter the result.
+			 * If the rocket ship is pointing up, when the person lands on it it will move that wheel up 1 spot.
+			 * If the rocket ship is pointing down, it will move the wheel down one slot.
+			 */
+
 			UI.PrintGameInstructions();
 			int bet = UI.MakeYourBet(bet = 0);
 
