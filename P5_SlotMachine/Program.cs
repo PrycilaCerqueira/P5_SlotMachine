@@ -6,27 +6,25 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
-			int bet = 0;
-			UI.PrintGame1stInstructions();
-			bet = UI.MakeYourBet(bet);
+			UI.PrintGameInstructions();
+			int bet = UI.MakeYourBet(bet = 0);
 
-			int[,] array2D = new int[bet, 3]; //Defines and initiates an array 2D - 1 to 3 rows and 3 colums.
- 			Logic.FillUp2DArray(array2D);
-			UI.PrintArrayMatrix(array2D);
+			int[,] grid = new int[bet, 3]; //Defines and initiates an array 2D - 1 to 3 rows and 3 colums.
+ 			Logic.FillUpGrid(grid);
+			UI.PrintGrid(grid);
 
-			int cashSum = Logic.CheckSimilarElements(bet, array2D);
+			int cashSum = Logic.CheckGridElementSimilarities(bet, grid);
 			
 			while (cashSum != 0)
 			{
 				UI.PrintWinLose(cashSum);
-				bool yesNo = UI.AskToContinueGame();
+				bool continuePlay = UI.AskToContinueGame();
 								
-				if (yesNo == true)
+				if (continuePlay == true)
                 {		
 					if (cashSum > 4) //Calculates the new bet in case the player won more than $4. The limit per round is $3. 
 					{
-						int newBet = 0;
-						newBet = UI.MakeYourBet(newBet);
+						int newBet = UI.MakeYourBet(newBet = 0);
 						cashSum = cashSum - newBet;
 						bet = newBet;
 					}
@@ -36,10 +34,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 						cashSum = 0;
 					}
 			
-					array2D = new int[bet, 3];
-					Logic.FillUp2DArray(array2D);
-					UI.PrintArrayMatrix(array2D);
-					int cash = Logic.CheckSimilarElements(bet, array2D);
+					grid = new int[bet, 3];
+					Logic.FillUpGrid(grid);
+					UI.PrintGrid(grid);
+					int cash = Logic.CheckGridElementSimilarities(bet, grid);
 					cashSum = cashSum + cash;
 				}
 				else

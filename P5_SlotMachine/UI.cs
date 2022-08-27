@@ -11,7 +11,7 @@ namespace P5_SlotMachine
         /// <summary>
         /// It prints the game headline and its first instructions
         /// </summary>
-        public static void PrintGame1stInstructions()
+        public static void PrintGameInstructions()
         {
             Console.WriteLine("***** Slot Machine Game *****\n");
             Console.WriteLine("Game rules:\n-To initiate the game you need to make a bet.\n-Each line costs $1 and you can bet up to $3 at once.");
@@ -56,15 +56,15 @@ namespace P5_SlotMachine
         /// <summary>
         /// Prints an array in a 3x3 matrix shape
         /// </summary>
-        /// <param name="array2D">Integer array [3,3] </param>
-        public static void PrintArrayMatrix(int[,] array2D)
+        /// <param name="grid">Integer array [3,3] </param>
+        public static void PrintGrid(int[,] grid)
         {
             Console.WriteLine();// Skips a line
-            for (int row = 0; row < array2D.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
+            for (int row = 0; row < grid.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
-                for (int column = 0; column < array2D.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
+                for (int column = 0; column < grid.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
                 {
-                    Console.Write($"  {array2D[row, column]}"); //Print the numbers in line sepated by a space
+                    Console.Write($"  {grid[row, column]}"); //Print the numbers in line sepated by a space
                 }
                 Console.WriteLine();//Skips a line to print another set of numbers in line on the next iteraction
             }

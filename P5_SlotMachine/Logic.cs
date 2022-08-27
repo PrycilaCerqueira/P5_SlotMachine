@@ -11,22 +11,22 @@ namespace P5_SlotMachine
 		/// <summary>
 		/// Nested loops to fill up the array with random numbers
 		/// </summary>
-		/// <param name="array2D">Array [n,n]</param>
+		/// <param name="grid">Array [n,n]</param>
 		/// <returns> Filled up array</returns>
-		public static int[,] FillUp2DArray(int[,] array2D)
+		public static int[,] FillUpGrid(int[,] grid)
         {
 			
-			for (int row = 0; row < array2D.GetLength(0); row++)
+			for (int row = 0; row < grid.GetLength(0); row++)
 			{
-				for (int column = 0; column < array2D.GetLength(1); column++)
+				for (int column = 0; column < grid.GetLength(1); column++)
 				{
 					Random rnd = new Random();
 					int num = rnd.Next(1, 10);
 
-					array2D[row, column] = num; //assigns a rdn number to each array item
+					grid[row, column] = num; //assigns a rdn number to each array item
 				}
 			}
-			return array2D;
+			return grid;
 		}
 
 		/// <summary>
@@ -130,37 +130,37 @@ namespace P5_SlotMachine
 		/// It checks the arrays elements similarities
 		/// </summary>
 		/// <param name="bet">Int bet </param>
-		/// <param name="array2D">Array 2D</param>
+		/// <param name="grid">Array 2D</param>
 		/// <returns>Int cashSum</returns>
-		public static int CheckSimilarElements(int bet, int[,] array2D)
+		public static int CheckGridElementSimilarities(int bet, int[,] grid)
         {
 			bool result;
-			int[] lineArray = new int[3];
+			int[] newGrid = new int[3];
 			int cashSum = 0;
 
 			//Check ROWS elements similarities
 			for (int rows = 0; rows < bet; rows++)
 			{
-				lineArray = CreateRows1DArray(array2D, rows);
-				result = ConfirmEqualityOfElements(lineArray);
+				newGrid = CreateRows1DArray(grid, rows);
+				result = ConfirmEqualityOfElements(newGrid);
 				cashSum = CalcCash(result, cashSum);
 			}
 
 			if (bet > 2)
 			{
 				//Check COLUMNS elements similarities
-				for (int columns = 0; columns < array2D.GetLength(1); columns++)
+				for (int columns = 0; columns < grid.GetLength(1); columns++)
 				{
-					lineArray = CreateColumns1DArray(array2D, columns);
-					result = ConfirmEqualityOfElements(lineArray);
+					newGrid = CreateColumns1DArray(grid, columns);
+					result = ConfirmEqualityOfElements(newGrid);
 					cashSum = CalcCash(result, cashSum);
 				}
 
 				//Check DIAGONAL array elements similarities
 				for (int diagonals = 0; diagonals < 2; diagonals++)
 				{
-					lineArray = CreateDiagonal1DArray(array2D, diagonals);
-					result = ConfirmEqualityOfElements(lineArray);
+					newGrid = CreateDiagonal1DArray(grid, diagonals);
+					result = ConfirmEqualityOfElements(newGrid);
 					cashSum = CalcCash(result, cashSum);
 				}
 			}
