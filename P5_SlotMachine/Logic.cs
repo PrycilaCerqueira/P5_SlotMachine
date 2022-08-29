@@ -65,7 +65,7 @@ namespace P5_SlotMachine
 					newGrid[index1] = newGrid[++index1];
 
 					//			2				0
-					newGrid[index1] = newGrid[index1];
+					newGrid[index1] = newGrid[index1 - index1];
 
 					//			0		element
 					newGrid[index1] = element;
