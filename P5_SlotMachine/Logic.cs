@@ -30,20 +30,51 @@ namespace P5_SlotMachine
 			return grid;
 		}
 
-		public static int[,] MoveGridElements(int[,] grid)
+		public static void MoveGridElements(int[,] grid)
         {
-			int[,] newGrid = new int[grid.GetLength(0), grid.GetLength(1)];
+			int[] newGrid = new int[grid.GetLength(0)];
 
-			for (int column = 0; column < grid.GetLength(1); column++)
+			for (int col = 0; col < grid.GetLength(0); col++)
 			{
-				for (int row = 0; row < grid.GetLength(0); row++)
-				{
-					if ()
-				}
+				newGrid = CreateColumnsGrid(grid, col);
 			}
 
-			return newGrid;
-        }
+			
+			/*
+			for (int row = 0; row < newGrid.GetLength(0); row++)
+			{
+				newGrid[row] = grid[row, col];
+
+
+				int searchNum1 = 10;
+				int index1 = Array.IndexOf(newGrid, searchNum1);
+
+				if (index1 == 0)
+                {
+					int element = newGrid[index1]; //0
+
+					//0					1
+                    newGrid[index1] = newGrid[index1 + 1];
+
+					//1					2
+					newGrid[index1] = newGrid[index1 + 1];
+
+					//2					element
+					newGrid[index1] = element;
+				}
+
+				for (int i = 0; i < newGrid.GetLength(0); i++)
+				{
+					Console.WriteLine(newGrid[i]);
+					Console.WriteLine();
+				}
+
+			}
+			*/
+
+
+			//return newGrid;
+		}
 
 		/// <summary>
 		/// It creates a auxiliary 1D array 
@@ -70,9 +101,9 @@ namespace P5_SlotMachine
 		/// <returns>One dimension array</returns>
 		public static int[] CreateColumnsGrid(int[,] grid, int col)
 		{
-			int[] newGrid = new int[grid.GetLength(1)];
+			int[] newGrid = new int[grid.GetLength(0)];
 
-			for (int row = 0; row < grid.GetLength(1); row++)
+			for (int row = 0; row < grid.GetLength(0); row++)
 			{
 				newGrid[row] = grid[row, col];
 			}
@@ -165,7 +196,7 @@ namespace P5_SlotMachine
 			if (bet > 2)
 			{
 				//Check COLUMNS elements similarities
-				for (int columns = 0; columns < grid.GetLength(1); columns++)
+				for (int columns = 0; columns < grid.GetLength(0); columns++)
 				{
 					newGrid = CreateColumnsGrid(grid, columns);
 					result = ConfirmEqualityOfElements(newGrid);

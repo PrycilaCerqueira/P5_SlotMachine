@@ -77,7 +77,7 @@ namespace P5_SlotMachine
                         stringGrid[row, column] = @"\/"; //rockect pointing down
                     }
                     
-                    Console.Write($"  {stringGrid[row, column]}"); //Print the numbers in line sepated by a space
+                    Console.Write($"   {stringGrid[row, column]}"); //Print the numbers in line sepated by a space
                 }
                 Console.WriteLine();//Skips a line to print another set of numbers in line on the next iteraction
             }
