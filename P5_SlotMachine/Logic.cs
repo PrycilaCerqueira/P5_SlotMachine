@@ -37,6 +37,25 @@ namespace P5_SlotMachine
 			for (int col = 0; col < grid.GetLength(0); col++)
 			{
 				newGrid = CreateColumnsGrid(grid, col);
+
+				int searchNum1 = 10;
+				int index1 = Array.IndexOf(newGrid, searchNum1);
+
+				if (index1 == 0)
+				{
+					// element				0
+					int element = newGrid[index1];
+
+					//			0					1
+					newGrid[index1] = newGrid[++index1];
+
+					//			1					2
+					newGrid[index1] = newGrid[++index1];
+
+					//			2		element
+					newGrid[index1] = element;
+				}
+
 			}
 
 			
