@@ -56,42 +56,44 @@ namespace P5_SlotMachine
 					newGrid[index1] = element;
 				}
 
-			}
-
-			
-			/*
-			for (int row = 0; row < newGrid.GetLength(0); row++)
-			{
-				newGrid[row] = grid[row, col];
-
-
-				int searchNum1 = 10;
-				int index1 = Array.IndexOf(newGrid, searchNum1);
-
-				if (index1 == 0)
+				if (index1 == 1)
                 {
-					int element = newGrid[index1]; //0
+					// element				1
+					int element = newGrid[index1];
 
-					//0					1
-                    newGrid[index1] = newGrid[index1 + 1];
+					//			1					2
+					newGrid[index1] = newGrid[++index1];
 
-					//1					2
-					newGrid[index1] = newGrid[index1 + 1];
+					//			2				0
+					newGrid[index1] = newGrid[index1];
 
-					//2					element
+					//			0		element
 					newGrid[index1] = element;
 				}
 
-				for (int i = 0; i < newGrid.GetLength(0); i++)
+				if (index1 == 2)
 				{
-					Console.WriteLine(newGrid[i]);
-					Console.WriteLine();
+					// element				2
+					int element = newGrid[index1];
+
+					//			2					0
+					newGrid[index1] = newGrid[index1 - index1];
+
+					//			0				1
+					newGrid[index1] = newGrid[++index1];
+
+					//			1		element
+					newGrid[index1] = element;
 				}
 
+				/*
+				int searchNum2 = 11;
+				int index2 = Array.IndexOf(newGrid, searchNum2);
+
+				if (index2 == 0)
+				*/
 			}
-			*/
-
-
+	
 			//return newGrid;
 		}
 
