@@ -34,6 +34,11 @@ namespace P5_SlotMachine
         {
 			int[] newGrid = new int[grid.GetLength(0)];
 
+			for (int i = 0; i < grid.GetLength(0); i++)
+            {
+				int slot =  (i + 1) % grid.GetLength(0);
+            }
+			/*
 			for (int col = 0; col < grid.GetLength(0); col++)
 			{
 				newGrid = CreateColumnsGrid(grid, col);
@@ -41,61 +46,35 @@ namespace P5_SlotMachine
 				int searchNum1 = 10;
 				int index1 = Array.IndexOf(newGrid, searchNum1);
 
+				
 				if (index1 == 0)
 				{
-					// element				0
 					int element = newGrid[index1];
-
-					//			0					1
 					newGrid[index1] = newGrid[++index1];
-
-					//			1					2
 					newGrid[index1] = newGrid[++index1];
-
-					//			2		element
 					newGrid[index1] = element;
 				}
-
+		
 				if (index1 == 1)
                 {
-					// element				1
 					int element = newGrid[index1];
-
-					//			1					2
 					newGrid[index1] = newGrid[++index1];
-
-					//			2				0
 					newGrid[index1] = newGrid[index1 - index1];
-
-					//			0		element
-					newGrid[index1] = element;
+					newGrid[index1 - index1] = element;
 				}
 
 				if (index1 == 2)
 				{
-					// element				2
 					int element = newGrid[index1];
-
-					//			2					0
 					newGrid[index1] = newGrid[index1 - index1];
-
-					//			0				1
-					newGrid[index1] = newGrid[++index1];
-
-					//			1		element
+					newGrid[index1 - index1] = newGrid[--index1];
 					newGrid[index1] = element;
 				}
-
-				/*
-				int searchNum2 = 11;
-				int index2 = Array.IndexOf(newGrid, searchNum2);
-
-				if (index2 == 0)
-				*/
-			}
-	
-			//return newGrid;
+			*/
+							
 		}
+
+	
 
 		/// <summary>
 		/// It creates a auxiliary 1D array 
