@@ -43,8 +43,6 @@ namespace P5_SlotMachine
 
 				if (index1 == 0)
 				{
-					int element = newGrid[index1];
-
 					for (int i = 0; i < grid.GetLength(0); i++)
 					{
 						int slot = (i + 2) % grid.GetLength(0);
@@ -61,18 +59,23 @@ namespace P5_SlotMachine
 
 				if (index1 == 1)
 				{
+
+					/*
 					int element = newGrid[1];
 					newGrid[1] = newGrid[2];
 					newGrid[2] = newGrid[0];
 					newGrid[0] = element;
+					*/
 				}
 
 				if (index1 == 2)
 				{
+					/*
 					int element = newGrid[2];
 					newGrid[2] = newGrid[0];
 					newGrid[0] = newGrid[1];
 					newGrid[1] = element;
+					*/
 				}
 
 			}					
