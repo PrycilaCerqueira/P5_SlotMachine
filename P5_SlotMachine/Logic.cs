@@ -34,45 +34,49 @@ namespace P5_SlotMachine
         {
 			int[] newGrid = new int[grid.GetLength(0)];
 
-			for (int i = 0; i < grid.GetLength(0); i++)
-            {
-				int slot =  (i + 1) % grid.GetLength(0);
-            }
-			/*
 			for (int col = 0; col < grid.GetLength(0); col++)
 			{
 				newGrid = CreateColumnsGrid(grid, col);
 
-				int searchNum1 = 10;
-				int index1 = Array.IndexOf(newGrid, searchNum1);
+				int searchNum = 10;
+				int index1 = Array.IndexOf(newGrid, searchNum);
 
-				
 				if (index1 == 0)
 				{
 					int element = newGrid[index1];
-					newGrid[index1] = newGrid[++index1];
-					newGrid[index1] = newGrid[++index1];
-					newGrid[index1] = element;
+
+					for (int i = 0; i < grid.GetLength(0); i++)
+					{
+						int slot = (i + 2) % grid.GetLength(0);
+						newGrid[slot] = newGrid[++slot];
+					}
+
+					/*
+					int element = newGrid[0];
+					newGrid[0] = newGrid[1];
+					newGrid[1] = newGrid[2];
+					newGrid[2] = element;
+					*/
 				}
-		
+
 				if (index1 == 1)
-                {
-					int element = newGrid[index1];
-					newGrid[index1] = newGrid[++index1];
-					newGrid[index1] = newGrid[index1 - index1];
-					newGrid[index1 - index1] = element;
+				{
+					int element = newGrid[1];
+					newGrid[1] = newGrid[2];
+					newGrid[2] = newGrid[0];
+					newGrid[0] = element;
 				}
 
 				if (index1 == 2)
 				{
-					int element = newGrid[index1];
-					newGrid[index1] = newGrid[index1 - index1];
-					newGrid[index1 - index1] = newGrid[--index1];
-					newGrid[index1] = element;
+					int element = newGrid[2];
+					newGrid[2] = newGrid[0];
+					newGrid[0] = newGrid[1];
+					newGrid[1] = element;
 				}
-			*/
-							
-		}
+
+			}					
+		}	
 
 	
 
