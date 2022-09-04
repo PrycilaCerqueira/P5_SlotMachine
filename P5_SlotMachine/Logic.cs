@@ -27,10 +27,12 @@ namespace P5_SlotMachine
 
                 }
             }
+
+
             return grid;
         }
 
-        public static void MoveGridElements(int[,] grid)
+        public static int[,] MoveGridElements(int[,] grid)
         {
             int[] newGrid = new int[grid.GetLength(0)];
 
@@ -39,7 +41,7 @@ namespace P5_SlotMachine
                 newGrid = CreateColumnsGrid(grid, col);
 
                 int element;
-                int searchNum = 10;
+                int searchNum = 10; //rocket pointing up
                 int index = Array.IndexOf(newGrid, searchNum);
                 if (index != -1)
                 {
@@ -51,23 +53,29 @@ namespace P5_SlotMachine
                     newGrid[newGrid.GetUpperBound(0)] = element; // get the last index of the array
                 }
 
-                searchNum = 11;
+                searchNum = 11; //rocket pointing down
                 index = Array.IndexOf((newGrid), searchNum);
                 if (index != -1)
                 {
-                    element = newGrid[newGrid.GetUpperBound(0)];
-                    for (int slot = 2; slot < newGrid.GetLength(0) -1; slot--)
+                    element = newGrid[newGrid.GetUpperBound(0)]; // get the last index of the array
+                    for (int slot = 2; slot < newGrid.GetLength(0) - 1; slot--)
                     {
                         newGrid[slot] = newGrid[slot - 1];
                     }
-                    newGrid[newGrid.GetLowerBound(0)] = element;
-                    
+                    newGrid[newGrid.GetLowerBound(0)] = element; // get the first index of the array
                 }
-                
-                
 
+                //TODO: update Grid with the moved elements
+                if ()
+                {
+                    for (int row = 0; row < newGrid.GetLength(0); row++)
+                    {
+                        grid[row, col] = newGrid[row];
+                    }
+                }
 
             }
+            return grid;
         }
 
 

@@ -21,9 +21,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
  			Logic.FillUpGrid(grid);
 			UI.PrintGrid(grid);
 
-			//grid = 
-			Logic.MoveGridElements(grid);
-			//UI.PrintGrid(grid);
+			grid = Logic.MoveGridElements(grid);
+			UI.PrintGrid(grid);
 
 			int cashSum = Logic.CheckGridSimilarElements(bet, grid);
 			
