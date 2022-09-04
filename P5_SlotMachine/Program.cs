@@ -15,10 +15,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			 */
 
 			UI.PrintGameInstructions();
-			int bet = UI.MakeYourBet(bet = 0);
-			
-			int[,] grid = new int[bet, 3]; //Defines and initiates an array 2D - 1 to 3 rows and 3 colums.
- 			Logic.FillUpGrid(grid);
+			int bet = UI.MakeYourBet(bet = 0); //bet dictates number of rows in grid
+
+
+            int[,] grid = Logic.CreateGrid(bet);
 			UI.PrintGrid(grid);
 
 			grid = Logic.MoveGridElements(grid);
@@ -45,8 +45,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 						cashSum = 0;
 					}
 			
-					grid = new int[bet, 3];
-					Logic.FillUpGrid(grid);
+					
+					grid = Logic.CreateGrid(bet);
 					UI.PrintGrid(grid);
 					int cash = Logic.CheckGridSimilarElements(bet, grid);
 					cashSum = cashSum + cash;

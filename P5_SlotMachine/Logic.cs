@@ -13,20 +13,22 @@ namespace P5_SlotMachine
         /// </summary>
         /// <param name="grid">Array [n,n]</param>
         /// <returns> Filled up array</returns>
-        public static int[,] FillUpGrid(int[,] grid)
+        public static int[,] CreateGrid(int numberOfRows)
         {
-
+            int[,] grid = new int[numberOfRows, 3]; //Defines and initiates an array 2D - 1 to 3 rows and 3 colums.
             for (int row = 0; row < grid.GetLength(0); row++)
             {
                 for (int column = 0; column < grid.GetLength(1); column++)
                 {
                     Random rnd = new Random();
-                    int num = rnd.Next(1, 12);
+                    int num = rnd.Next(1, 12); //TODO: change range 1-10
 
                     grid[row, column] = num; //assigns a rdn number to each array item
 
                 }
             }
+
+            //TODO: Random location for the rocket (10 or 11). Use randim method
 
 
             return grid;
@@ -34,49 +36,64 @@ namespace P5_SlotMachine
 
         public static int[,] MoveGridElements(int[,] grid)
         {
-            int[] newGrid = new int[grid.GetLength(0)];
 
-            for (int col = 0; col < grid.GetLength(0); col++)
+            int[] currentColumn = new int[grid.GetLength(0)]; // array size is based on the number of rows
+
+            for (int col = 0; col < grid.GetLength(1); col++) //iteration of the array is based on the number of columns
             {
-                newGrid = CreateColumnsGrid(grid, col);
+                currentColumn = GetGridColumn(grid, col);
 
-                int element;
+                int lastElement;
+                int firstElement;
                 int searchNum = 10; //rocket pointing up
-                int index = Array.IndexOf(newGrid, searchNum);
+                int index = Array.IndexOf(currentColumn, searchNum);
                 if (index != -1)
                 {
+                    /*
                     element = newGrid[newGrid.GetLowerBound(0)]; // get the first index of the array
-                    for (int slot = 0; slot < newGrid.GetLength(0) -1; slot++)
+                    for (int slot = 0; slot < newGrid.GetLength(0) - 1; slot++)
                     {
                         newGrid[slot] = newGrid[slot + 1];
                     }
                     newGrid[newGrid.GetUpperBound(0)] = element; // get the last index of the array
+                    */
+                    firstElement = grid[grid.GetLowerBound(0), col];  //get the frist element of current column
+                    for (int row = grid.GetLowerBound(0); row < grid.GetUpperBound(0); row++)
+                    {
+                        grid[row,col] = grid[row + 1,col];
+                    } 
+                    grid[grid.GetUpperBound(0), col] = firstElement;
                 }
 
                 searchNum = 11; //rocket pointing down
-                index = Array.IndexOf((newGrid), searchNum);
+                index = Array.IndexOf((currentColumn), searchNum);
                 if (index != -1)
                 {
+                    /*
                     element = newGrid[newGrid.GetUpperBound(0)]; // get the last index of the array
-                    for (int slot = 2; slot < newGrid.GetLength(0) - 1; slot--)
+                    for (int slot = newGrid.GetUpperBound(0); slot > newGrid.GetLowerBound(0); slot--)
                     {
                         newGrid[slot] = newGrid[slot - 1];
                     }
                     newGrid[newGrid.GetLowerBound(0)] = element; // get the first index of the array
-                }
-
-                //TODO: update Grid with the moved elements
-                if ()
-                {
-                    for (int row = 0; row < newGrid.GetLength(0); row++)
+                    */
+                    lastElement = grid[grid.GetUpperBound(0),col];
+                    for (int row = grid.GetUpperBound(0); row > grid.GetLowerBound(0); row--) //update 2D grid
                     {
-                        grid[row, col] = newGrid[row];
+                        grid[row,col] = grid[row - 1, col];
                     }
+                    grid[grid.GetLowerBound(0), col] = lastElement;
                 }
-
             }
             return grid;
+
+            //TODO: update Grid with the moved elements
         }
+
+
+           
+         
+
 
 
 
@@ -103,13 +120,13 @@ namespace P5_SlotMachine
         /// <param name="grid">Two dimensions array</param>
         /// <param name="col">Number of columns</param>
         /// <returns>One dimension array</returns>
-        public static int[] CreateColumnsGrid(int[,] grid, int col)
+        public static int[] GetGridColumn(int[,] grid, int col)
         {
             int[] newGrid = new int[grid.GetLength(0)];
 
             for (int row = 0; row < grid.GetLength(0); row++)
             {
-                newGrid[row] = grid[row, col];
+                newGrid[row] = grid[row,col];
             }
             return newGrid;
 
@@ -202,7 +219,7 @@ namespace P5_SlotMachine
                 //Check COLUMNS elements similarities
                 for (int columns = 0; columns < grid.GetLength(0); columns++)
                 {
-                    newGrid = CreateColumnsGrid(grid, columns);
+                    newGrid = GetGridColumn(grid, columns);
                     result = ConfirmEqualityOfElements(newGrid);
                     cashSum = CalcCash(result, cashSum);
                 }
