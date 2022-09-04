@@ -60,6 +60,7 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			}
 			UI.PrintWinLoseMsg(cashSum);
 
+
 		}
 	}
 }

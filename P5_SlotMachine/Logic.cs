@@ -38,54 +38,34 @@ namespace P5_SlotMachine
             {
                 newGrid = CreateColumnsGrid(grid, col);
 
+                int element;
                 int searchNum = 10;
-                int index1 = Array.IndexOf(newGrid, searchNum);
-
-                if (index1 == 0)
+                int index = Array.IndexOf(newGrid, searchNum);
+                if (index != -1)
                 {
-                    for (int i = 0; i < grid.GetLength(0) -1; i++)
+                    element = newGrid[newGrid.GetLowerBound(0)]; // get the first index of the array
+                    for (int slot = 0; slot < newGrid.GetLength(0) -1; slot++)
                     {
-                        //	int slot = (i + 2) % grid.GetLength(0);
-
-                        newGrid[i] = newGrid[i + 1];
+                        newGrid[slot] = newGrid[slot + 1];
                     }
-
-                    int slot = 0;
-                    int x;
-
-                    x = slot + 1;
-                    slot++;
-                    x = slot;
-                    x = slot = slot + 1;
-
-                    /*
-					int element = newGrid[0];
-					newGrid[0] = newGrid[1];
-					newGrid[1] = newGrid[2];
-					newGrid[2] = element;
-					*/
+                    newGrid[newGrid.GetUpperBound(0)] = element; // get the last index of the array
                 }
 
-                if (index1 == 1)
+                searchNum = 11;
+                index = Array.IndexOf((newGrid), searchNum);
+                if (index != -1)
                 {
-
-                    /*
-					int element = newGrid[1];
-					newGrid[1] = newGrid[2];
-					newGrid[2] = newGrid[0];
-					newGrid[0] = element;
-					*/
+                    element = newGrid[newGrid.GetUpperBound(0)];
+                    for (int slot = 2; slot < newGrid.GetLength(0) -1; slot--)
+                    {
+                        newGrid[slot] = newGrid[slot - 1];
+                    }
+                    newGrid[newGrid.GetLowerBound(0)] = element;
+                    
                 }
+                
+                
 
-                if (index1 == 2)
-                {
-                    /*
-					int element = newGrid[2];
-					newGrid[2] = newGrid[0];
-					newGrid[0] = newGrid[1];
-					newGrid[1] = element;
-					*/
-                }
 
             }
         }
