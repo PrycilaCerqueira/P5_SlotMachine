@@ -61,7 +61,7 @@ namespace P5_SlotMachine
         {
             string[,] stringGrid = new string [grid.GetLength(0), grid.GetLength(1)];
 
-            Console.WriteLine($"\n *{gridStatus} Grid*");// Skips a line
+            Console.WriteLine($"\n  {gridStatus}");// Skips a line
             for (int row = 0; row < grid.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
                 for (int column = 0; column < grid.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)

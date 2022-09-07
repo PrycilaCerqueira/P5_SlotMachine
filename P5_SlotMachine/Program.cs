@@ -10,14 +10,14 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 			UI.PrintGameInstructions();
 			int bet = UI.MakeYourBet(bet = 0); //bet dictates number of rows in grid
 
-			string gridMoveStatus = "Original";
+			string gridMoveStatus = "***Grid***";
             int[,] grid = Logic.CreateGrid(bet);
 			UI.PrintGrid(grid, gridMoveStatus);
 
 			bool result = Logic.ShouldTheGridRotate(grid); 
 			if (result == true)
 			{
-                gridMoveStatus = "Rotated";
+                gridMoveStatus = "*Rotated Grid*";
                 grid = Logic.MoveGridElements(grid);
                 UI.PrintGrid(grid, gridMoveStatus);
             }
