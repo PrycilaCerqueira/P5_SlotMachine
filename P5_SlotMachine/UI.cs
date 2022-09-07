@@ -9,7 +9,7 @@ namespace P5_SlotMachine
     public class UI
     {
         /// <summary>
-        /// It prints the game headline and its first instructions
+        /// It prints the game headline and instructions
         /// </summary>
         public static void PrintGameInstructions()
         {
@@ -54,14 +54,14 @@ namespace P5_SlotMachine
         }
 
         /// <summary>
-        /// Prints an array in a 3x3 matrix shape
+        /// Prints an array in an up 3x3 matrix shape
         /// </summary>
-        /// <param name="grid">Integer array [3,3] </param>
-        public static void PrintGrid(int[,] grid)
+        /// <param name="grid">Array [rows, columns] </param>
+        public static void PrintGrid(int[,] grid, string gridStatus)
         {
             string[,] stringGrid = new string [grid.GetLength(0), grid.GetLength(1)];
 
-            Console.WriteLine();// Skips a line
+            Console.WriteLine($"\n *{gridStatus} Grid*");// Skips a line
             for (int row = 0; row < grid.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
                 for (int column = 0; column < grid.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
@@ -84,7 +84,7 @@ namespace P5_SlotMachine
         }
 
         /// <summary>
-        /// It printes a message of the array elements similirities
+        /// Prints a Won or Lose to the players
         /// </summary>
         /// <param name="resValidation">True or False</param>
         /// <param name="index">Index number</param>
@@ -93,7 +93,7 @@ namespace P5_SlotMachine
         {
             if (cashSum > 0)
             {
-                Console.WriteLine($"\nYou WON!!!\nTotal ${cashSum}");
+                Console.WriteLine($"\nYou WIN!!!\nTotal ${cashSum}");
             }
             else
             {
@@ -103,24 +103,24 @@ namespace P5_SlotMachine
         }
 
         /// <summary>
-        /// It asks the played whether they want to continue or not
+        /// It asks the player whether they want to continue or not
         /// </summary>
-        /// <returns>True/False</returns>
+        /// <returns>Yes or No response</returns>
         public static bool AskToContinueGame()
         {
-            bool yesNo;
+            bool yesNoResponse;
             Console.Write("\nWould you like to make a new bet? Y/N\nEnter: ");
 
-            if (Console.ReadKey().Key == ConsoleKey.Y)
+            if (Console.ReadKey().Key == ConsoleKey.Y) //YES response
             {
-                yesNo = true;
+                yesNoResponse = true;
             }
-            else
+            else //NO response
             {
-                yesNo = false;
+                yesNoResponse = false;
             }
             Console.WriteLine();
-            return yesNo;
+            return yesNoResponse;
                         
         }
     }

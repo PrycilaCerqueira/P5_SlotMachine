@@ -22,13 +22,13 @@ namespace P5_SlotMachine
             {
                 for (int column = 0; column < grid.GetLength(1); column++)
                 {
-                    int num = rnd.Next(1, 10); //TODO: change range 1-10
-                    grid[row, column] = num; //assigns a rdn number to each array item
+                    int num = rnd.Next(1, 10);
+                    grid[row, column] = num; //Assigns a rdn number to each array item
 
                 }
             }
 
-            //TODO: Random location for the rocket (10 or 11). Use randim method
+            //Replaces a rnd grid item for 10 (rocket pointing UP) or 11 (rocket pointing DOWN).
             int columnPosition = rnd.Next(0, 3);
             int rowPosition = rnd.Next(0, numberOfRows);
             int numReplacement = rnd.Next(10, 12);
@@ -41,22 +41,56 @@ namespace P5_SlotMachine
             return grid;
         }
 
+        public static bool ShouldTheGridRotate(int[,] grid)
+        {
+            int[] flatGridArray = new int[grid.GetLength(0) * grid.GetLength(1)];
+            int slot = 0;
+            
+            for (int row = grid.GetLowerBound(0); row < grid.GetUpperBound(0); row++)
+            {
+                for(int column = grid.GetLowerBound(1); column < grid.GetUpperBound(1); column++)
+                {
+                    flatGridArray[slot] = grid[row, column];
+                    slot++;
+                }
+            }
+            
+            bool arrayContainNum = flatGridArray.Contains(10);
+            if (arrayContainNum == true)
+            {
+                return arrayContainNum;
+            }
+            else
+            {
+                arrayContainNum = flatGridArray.Contains(11);
+                if(arrayContainNum == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }
+
         public static int[,] MoveGridElements(int[,] grid)
         {
 
-            int[] currentColumn = new int[grid.GetLength(0)]; // array size is based on the number of rows
+            int[] currentColumn = new int[grid.GetLength(0)]; //Array size is based on the number of rows
 
-            for (int col = 0; col < grid.GetLength(1); col++) //iteration of the array is based on the number of columns
+            for (int col = 0; col < grid.GetLength(1); col++) //Iteration of the array is based on the number of columns
             {
                 currentColumn = GetGridColumn(grid, col);
 
                 int lastElement;
                 int firstElement;
-                int searchNum = 10; //rocket pointing up
+                int searchNum = 10; //Rocket pointing UP
                 int index = Array.IndexOf(currentColumn, searchNum);
                 if (index != -1)
                 {
-                    firstElement = grid[grid.GetLowerBound(0), col];  //get the frist element of current column
+                    firstElement = grid[grid.GetLowerBound(0), col];  //Gets the frist element of current column
                     for (int row = grid.GetLowerBound(0); row < grid.GetUpperBound(0); row++)
                     {
                         grid[row,col] = grid[row + 1,col];
@@ -64,12 +98,12 @@ namespace P5_SlotMachine
                     grid[grid.GetUpperBound(0), col] = firstElement;
                 }
 
-                searchNum = 11; //rocket pointing down
+                searchNum = 11; //Rocket pointing DOWN
                 index = Array.IndexOf((currentColumn), searchNum);
                 if (index != -1)
                 {
-                    lastElement = grid[grid.GetUpperBound(0),col];
-                    for (int row = grid.GetUpperBound(0); row > grid.GetLowerBound(0); row--) //update 2D grid
+                    lastElement = grid[grid.GetUpperBound(0),col]; //Gets the f element of current column
+                    for (int row = grid.GetUpperBound(0); row > grid.GetLowerBound(0); row--) 
                     {
                         grid[row,col] = grid[row - 1, col];
                     }

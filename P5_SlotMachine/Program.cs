@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 
 namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 {
@@ -6,23 +7,17 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
-
-			/*
-			 * TODO: 
-			 * Make it so that rows can have a rocket ship icon which can alter the result.
-			 * If the rocket ship is pointing up, when the person lands on it it will move that wheel up 1 spot.
-			 * If the rocket ship is pointing down, it will move the wheel down one slot.
-			 */
-
 			UI.PrintGameInstructions();
 			int bet = UI.MakeYourBet(bet = 0); //bet dictates number of rows in grid
 
-
+			string gridMoveStatus = "Original";
             int[,] grid = Logic.CreateGrid(bet);
-			UI.PrintGrid(grid);
+			UI.PrintGrid(grid, gridMoveStatus);
 
+
+			gridMoveStatus = "Rotated";
 			grid = Logic.MoveGridElements(grid);
-			UI.PrintGrid(grid);
+			UI.PrintGrid(grid, gridMoveStatus);
 
 			int cashSum = Logic.CheckGridSimilarElements(bet, grid);
 			
@@ -44,11 +39,17 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 						bet = cashSum;
 						cashSum = 0;
 					}
-			
+
+                    gridMoveStatus = "Original";
+                    grid = Logic.CreateGrid(bet);
+                    UI.PrintGrid(grid, gridMoveStatus);
+
 					
-					grid = Logic.CreateGrid(bet);
-					UI.PrintGrid(grid);
-					int cash = Logic.CheckGridSimilarElements(bet, grid);
+					gridMoveStatus = "Rotated";
+                    grid = Logic.MoveGridElements(grid);
+                    UI.PrintGrid(grid, gridMoveStatus);
+
+                    int cash = Logic.CheckGridSimilarElements(bet, grid);
 					cashSum = cashSum + cash;
 				}
 				else
