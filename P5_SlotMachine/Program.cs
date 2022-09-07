@@ -14,10 +14,13 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
             int[,] grid = Logic.CreateGrid(bet);
 			UI.PrintGrid(grid, gridMoveStatus);
 
-
-			gridMoveStatus = "Rotated";
-			grid = Logic.MoveGridElements(grid);
-			UI.PrintGrid(grid, gridMoveStatus);
+			bool result = Logic.ShouldTheGridRotate(grid); 
+			if (result == true)
+			{
+                gridMoveStatus = "Rotated";
+                grid = Logic.MoveGridElements(grid);
+                UI.PrintGrid(grid, gridMoveStatus);
+            }
 
 			int cashSum = Logic.CheckGridSimilarElements(bet, grid);
 			
@@ -44,10 +47,13 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
                     grid = Logic.CreateGrid(bet);
                     UI.PrintGrid(grid, gridMoveStatus);
 
-					
-					gridMoveStatus = "Rotated";
-                    grid = Logic.MoveGridElements(grid);
-                    UI.PrintGrid(grid, gridMoveStatus);
+                    result = Logic.ShouldTheGridRotate(grid);
+					if (result == true)
+					{
+						gridMoveStatus = "Rotated";
+						grid = Logic.MoveGridElements(grid);
+						UI.PrintGrid(grid, gridMoveStatus);
+					}
 
                     int cash = Logic.CheckGridSimilarElements(bet, grid);
 					cashSum = cashSum + cash;

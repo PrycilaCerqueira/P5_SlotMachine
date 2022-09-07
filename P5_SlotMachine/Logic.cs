@@ -41,16 +41,21 @@ namespace P5_SlotMachine
             return grid;
         }
 
+        /// <summary>
+        /// The Grid will rotate if it contains the elements 10 or 11
+        /// </summary>
+        /// <param name="grid">Grid up to 3x3 matrix</param>
+        /// <returns>True or False</returns>
         public static bool ShouldTheGridRotate(int[,] grid)
         {
             int[] flatGridArray = new int[grid.GetLength(0) * grid.GetLength(1)];
             int slot = 0;
             
-            for (int row = grid.GetLowerBound(0); row < grid.GetUpperBound(0); row++)
+            for (int row = 0; row < grid.GetLength(0); row++)
             {
-                for(int column = grid.GetLowerBound(1); column < grid.GetUpperBound(1); column++)
+                for(int col = 0; col < grid.GetLength(1); col++)
                 {
-                    flatGridArray[slot] = grid[row, column];
+                    flatGridArray[slot] = grid[row,col];
                     slot++;
                 }
             }
@@ -58,14 +63,14 @@ namespace P5_SlotMachine
             bool arrayContainNum = flatGridArray.Contains(10);
             if (arrayContainNum == true)
             {
-                return arrayContainNum;
+                return true;
             }
             else
             {
                 arrayContainNum = flatGridArray.Contains(11);
                 if(arrayContainNum == true)
                 {
-                    return true;
+                    return arrayContainNum;
                 }
                 else
                 {
