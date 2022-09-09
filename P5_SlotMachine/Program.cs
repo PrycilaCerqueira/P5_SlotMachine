@@ -7,64 +7,70 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 	{
 		static void Main(string[] args)
 		{
-			UI.PrintGameInstructions();
-			int bet = UI.MakeYourBet(bet = 0); //bet dictates number of rows in grid
+            UI.PrintGameInstructions();
 
-			string gridMoveStatus = "***Grid***";
-            int[,] grid = Logic.CreateGrid(bet);
-			UI.PrintGrid(grid, gridMoveStatus);
-
-			bool result = Logic.ShouldTheGridRotate(grid); 
-			if (result == true)
+            do
 			{
-                gridMoveStatus = "*Rotated Grid*";
-                grid = Logic.MoveGridElements(grid);
-                UI.PrintGrid(grid, gridMoveStatus);
-            }
+				int bet = UI.MakeYourBet(0); //bet dictates number of rows in grid
 
-			int cashSum = Logic.CheckGridSimilarElements(bet, grid);
-			
-			while (cashSum != 0)
-			{
-				UI.PrintWinLoseMsg(cashSum);
-				bool continuePlay = UI.AskToContinueGame();
-								
-				if (continuePlay == true)
-                {		
-					if (cashSum > 4) //Calculates the new bet in case the player won more than $4. The limit per round is $3. 
-					{
-						int newBet = UI.MakeYourBet(newBet = 0);
-						cashSum = cashSum - newBet;
-						bet = newBet;
-					}
-                    else
-                    {
-						bet = cashSum;
-						cashSum = 0;
-					}
+				string gridMoveStatus = "***Grid***";
+				int[,] grid = Logic.CreateGrid(bet);
+				UI.PrintGrid(grid, gridMoveStatus);
 
-                    gridMoveStatus = "Original";
-                    grid = Logic.CreateGrid(bet);
-                    UI.PrintGrid(grid, gridMoveStatus);
-
-                    result = Logic.ShouldTheGridRotate(grid);
-					if (result == true)
-					{
-						gridMoveStatus = "Rotated";
-						grid = Logic.MoveGridElements(grid);
-						UI.PrintGrid(grid, gridMoveStatus);
-					}
-
-                    int cash = Logic.CheckGridSimilarElements(bet, grid);
-					cashSum = cashSum + cash;
+				bool result = Logic.ShouldTheGridRotate(grid);
+				if (result == true)
+				{
+					gridMoveStatus = "*Rotated Grid*";
+					grid = Logic.MoveGridElements(grid);
+					UI.PrintGrid(grid, gridMoveStatus);
 				}
-				else
+
+				int cashSum = Logic.CheckGridSimilarElements(bet, grid);
+
+				while (cashSum != 0)
 				{
 					UI.PrintWinLoseMsg(cashSum);
-					Environment.Exit(0);
-                }
-			}
-			UI.PrintWinLoseMsg(cashSum);
+					bool continuePlay = UI.AskToContinueGame();
+
+					if (continuePlay == true)
+					{
+						if (cashSum > 4) //Calculates the new bet in case the player won more than $4. The limit per round is $3. 
+						{
+							int newBet = UI.MakeYourBet(newBet = 0);
+							cashSum = cashSum - newBet;
+							bet = newBet;
+						}
+						else
+						{
+							bet = cashSum;
+							cashSum = 0;
+						}
+
+						gridMoveStatus = "Original";
+						grid = Logic.CreateGrid(bet);
+						UI.PrintGrid(grid, gridMoveStatus);
+
+						result = Logic.ShouldTheGridRotate(grid);
+						if (result == true)
+						{
+							gridMoveStatus = "Rotated";
+							grid = Logic.MoveGridElements(grid);
+							UI.PrintGrid(grid, gridMoveStatus);
+						}
+
+						int cash = Logic.CheckGridSimilarElements(bet, grid);
+						cashSum = cashSum + cash;
+					}
+					else
+					{
+						UI.PrintWinLoseMsg(cashSum);
+						Environment.Exit(0);
+					}
+				}
+				UI.PrintWinLoseMsg(cashSum);
+
+			} while (UI.AskToContinueGame() == true);
+
 
 
 		}
