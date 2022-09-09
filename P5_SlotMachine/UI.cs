@@ -109,19 +109,18 @@ namespace P5_SlotMachine
         /// <returns>Yes or No response</returns>
         public static bool AskToContinueGame()
         {
-            bool yesNoResponse;
             Console.Write("\nWould you like to make a new bet? Y/N\nEnter: ");
 
             if (Console.ReadKey().Key == ConsoleKey.Y) //YES response
             {
-                yesNoResponse = true;
+                Console.WriteLine();
+                return true;
             }
             else //NO response
             {
-                yesNoResponse = false;
+                Console.WriteLine();
+                return false;
             }
-            Console.WriteLine();
-            return yesNoResponse;
                         
         }
     }
