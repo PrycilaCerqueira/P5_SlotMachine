@@ -29,12 +29,12 @@ namespace P5_SlotMachine
             }
 
             //Replaces a rnd grid item for 10 (rocket pointing UP) or 11 (rocket pointing DOWN).
-            int columnPosition = rnd.Next(0, 3);
             int rowPosition = rnd.Next(0, numberOfRows);
-            int numReplacement = rnd.Next(10, 12);
-
             if (rowPosition != 0)
             {
+                int columnPosition = rnd.Next(0, 3);
+                int numReplacement = rnd.Next(10, 12);
+
                 grid[rowPosition, columnPosition] = numReplacement;
             }
             

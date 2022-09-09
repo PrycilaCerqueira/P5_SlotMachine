@@ -59,12 +59,8 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 						int cash = Logic.CheckGridSimilarElements(numOfRows, grid);
 						cashSum = cashSum + cash;
 					}
-					else
-					{
-						UI.PrintWinLoseMsg(cashSum);
-						Environment.Exit(0);
-					}
 				}
+
 				UI.PrintWinLoseMsg(cashSum);
 
 			} while (UI.AskToContinueGame() == true);
