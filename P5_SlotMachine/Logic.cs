@@ -60,22 +60,17 @@ namespace P5_SlotMachine
                 }
             }
             
-            bool arrayContainNum = flatGridArray.Contains(10);
-            if (arrayContainNum == true)
+            if (flatGridArray.Contains(10) == true)
+            {
+                return true;
+            }
+            else if (flatGridArray.Contains(11) == true)
             {
                 return true;
             }
             else
             {
-                arrayContainNum = flatGridArray.Contains(11);
-                if(arrayContainNum == true)
-                {
-                    return arrayContainNum;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
 
         }

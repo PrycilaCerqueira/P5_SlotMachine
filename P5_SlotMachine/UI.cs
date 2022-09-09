@@ -71,11 +71,11 @@ namespace P5_SlotMachine
 
                     if (grid[row, column] == 10)
                     {
-                        stringGrid[row, column] = @"/\"; //rocket pointing up
+                        stringGrid[row, column] = "\u25b2"; //rocket pointing up
                     }
                     if (grid[row, column] == 11)
                     {
-                        stringGrid[row, column] = @"\/"; //rockect pointing down
+                        stringGrid[row, column] = "\u25bc"; //rockect pointing down
                     }
                     
                     Console.Write($"   {stringGrid[row, column]}"); //Print the numbers in line sepated by a space
