@@ -78,16 +78,18 @@ namespace P5_SlotMachine
         public static int[,] MoveGridElements(int[,] grid)
         {
 
-            int[] currentColumn = new int[grid.GetLength(0)]; //Array size is based on the number of rows
+            int[] currentColumnArray; //Array size is based on the number of rows
 
             for (int col = 0; col < grid.GetLength(1); col++) //Iteration of the array is based on the number of columns
             {
-                currentColumn = GetGridColumn(grid, col);
+                currentColumnArray = GetGridColumn(grid, col);
 
-                int lastElement;
                 int firstElement;
+                int lastElement;
+               
                 int searchNum = 10; //Rocket pointing UP
-                int index = Array.IndexOf(currentColumn, searchNum);
+                int index = Array.IndexOf(currentColumnArray, searchNum);
+                
                 if (index != -1)
                 {
                     firstElement = grid[grid.GetLowerBound(0), col];  //Gets the frist element of current column
@@ -99,7 +101,8 @@ namespace P5_SlotMachine
                 }
 
                 searchNum = 11; //Rocket pointing DOWN
-                index = Array.IndexOf((currentColumn), searchNum);
+                index = Array.IndexOf((currentColumnArray), searchNum);
+                
                 if (index != -1)
                 {
                     lastElement = grid[grid.GetUpperBound(0),col]; //Gets the f element of current column
@@ -115,19 +118,13 @@ namespace P5_SlotMachine
         }
 
 
-           
-         
-
-
-
-
         /// <summary>
         /// It creates a auxiliary 1D array 
         /// </summary>
         /// <param name="grid">Two dimensions array</param>
         /// <param name="row">Number of rows</param>
         /// <returns>One dimension array</returns>
-        public static int[] CreateRowsGrid(int[,] grid, int row)
+        public static int[] GetRowsGrid(int[,] grid, int row)
         {
             int[] newGrid = new int[grid.GetLength(1)];
 
@@ -162,7 +159,7 @@ namespace P5_SlotMachine
         /// <param name="grid">Two dimensions array</param>
         /// <param name="diag">Number of diagonals</param>
         /// <returns>One dimension array</returns>
-        public static int[] CreateDiagonalGrid(int[,] grid, int diag)
+        public static int[] GetDiagonalGrid(int[,] grid, int diag)
         {
             int[] newGrid = new int[grid.GetLength(1)];
 
@@ -233,7 +230,7 @@ namespace P5_SlotMachine
             //Check ROWS elements similarities
             for (int rows = 0; rows < bet; rows++)
             {
-                newGrid = CreateRowsGrid(grid, rows);
+                newGrid = GetRowsGrid(grid, rows);
                 result = ConfirmEqualityOfElements(newGrid);
                 cashSum = CalcCash(result, cashSum);
             }
@@ -251,7 +248,7 @@ namespace P5_SlotMachine
                 //Check DIAGONAL array elements similarities
                 for (int diagonals = 0; diagonals < 2; diagonals++)
                 {
-                    newGrid = CreateDiagonalGrid(grid, diagonals);
+                    newGrid = GetDiagonalGrid(grid, diagonals);
                     result = ConfirmEqualityOfElements(newGrid);
                     cashSum = CalcCash(result, cashSum);
                 }
