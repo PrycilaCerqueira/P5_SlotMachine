@@ -60,25 +60,24 @@ namespace P5_SlotMachine
         /// <param name="grid">Array [rows, columns] </param>
         public static void PrintGrid(int[,] grid, string gridStatus)
         {
-            string[,] stringGrid = new string [grid.GetLength(0), grid.GetLength(1)];
-
             Console.WriteLine($"\n  {gridStatus}");// Skips a line
             for (int row = 0; row < grid.GetLength(0); row++) //GetLength(<dimension>) returns the number of array items for each dimension (row = 3)
             {
                 for (int column = 0; column < grid.GetLength(1); column++) //GetLength(<dimension>) returns (colmns = 3)
                 {
-                    stringGrid[row, column] = grid[row, column].ToString();
+                    string gridElements = grid[row, column].ToString();
 
-                    if (grid[row, column] == 10)
+                    if (grid[row, column] == (int)Rocket.Mode.Up)
                     {
-                        stringGrid[row, column] = "\u25b2"; //rocket pointing up
+                        gridElements = "\u25b2";
                     }
-                    if (grid[row, column] == 11)
+                    if (grid[row, column] == (int)Rocket.Mode.Down)
                     {
-                        stringGrid[row, column] = "\u25bc"; //rockect pointing down
+                        gridElements = "\u25bc";
                     }
-                    
-                    Console.Write($"   {stringGrid[row, column]}"); //Print the numbers in line sepated by a space
+
+                    Console.Write($"   {gridElements}");
+                  
                 }
                 Console.WriteLine();//Skips a line to print another set of numbers in line on the next iteraction
             }
