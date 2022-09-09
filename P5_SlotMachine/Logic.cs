@@ -33,7 +33,7 @@ namespace P5_SlotMachine
             if (rowPosition != 0)
             {
                 int columnPosition = rnd.Next(0, 3);
-                int numReplacement = rnd.Next(10, 12);
+                int numReplacement = rnd.Next((int)Rocket.Mode.Up, (int)Rocket.Mode.Down + 1);
 
                 grid[rowPosition, columnPosition] = numReplacement;
             }
@@ -48,36 +48,22 @@ namespace P5_SlotMachine
         /// <returns>True or False</returns>
         public static bool ShouldTheGridRotate(int[,] grid)
         {
-            int[] flatGridArray = new int[grid.GetLength(0) * grid.GetLength(1)];
-            int slot = 0;
-            
+                        
             for (int row = 0; row < grid.GetLength(0); row++)
             {
                 for(int col = 0; col < grid.GetLength(1); col++)
                 {
-                    flatGridArray[slot] = grid[row,col];
-                    slot++;
+                    if (grid[row,col] == (int)Rocket.Mode.Up || (grid[row, col] == (int)Rocket.Mode.Down))
+                    {
+                        return true;
+                    }
                 }
             }
-            
-            if (flatGridArray.Contains(10) == true)
-            {
-                return true;
-            }
-            else if (flatGridArray.Contains(11) == true)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return false;        
         }
 
         public static int[,] MoveGridElements(int[,] grid)
         {
-
             int[] currentColumnArray; //Array size is based on the number of rows
 
             for (int col = 0; col < grid.GetLength(1); col++) //Iteration of the array is based on the number of columns
@@ -87,7 +73,7 @@ namespace P5_SlotMachine
                 int firstElement;
                 int lastElement;
                
-                int searchNum = 10; //Rocket pointing UP
+                int searchNum = (int) Rocket.Mode.Up;
                 int index = Array.IndexOf(currentColumnArray, searchNum);
                 
                 if (index != -1)
@@ -100,8 +86,8 @@ namespace P5_SlotMachine
                     grid[grid.GetUpperBound(0), col] = firstElement;
                 }
 
-                searchNum = 11; //Rocket pointing DOWN
-                index = Array.IndexOf((currentColumnArray), searchNum);
+                searchNum = (int)Rocket.Mode.Down;
+                index = Array.IndexOf(currentColumnArray, searchNum);
                 
                 if (index != -1)
                 {
