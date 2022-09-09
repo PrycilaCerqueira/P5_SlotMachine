@@ -47,8 +47,7 @@ namespace P5_SlotMachine
         /// <param name="grid">Grid up to 3x3 matrix</param>
         /// <returns>True or False</returns>
         public static bool ShouldTheGridRotate(int[,] grid)
-        {
-                        
+        {       
             for (int row = 0; row < grid.GetLength(0); row++)
             {
                 for(int col = 0; col < grid.GetLength(1); col++)

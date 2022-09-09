@@ -24,48 +24,10 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					UI.PrintGrid(grid, gridMoveStatus);
 				}
 
-				int cashSum = Logic.CheckGridSimilarElements(numOfRows, grid);
-
-				while (cashSum != 0)
-				{
-					UI.PrintWinLoseMsg(cashSum);
-					bool continuePlay = UI.AskToContinueGame();
-
-					if (continuePlay == true)
-					{
-						if (cashSum > 4) //Calculates the new bet in case the player won more than $4. The limit per round is $3. 
-						{
-							int newBet = UI.MakeYourBet();
-							cashSum = cashSum - newBet;
-							numOfRows = newBet;
-						}
-						else
-						{
-							numOfRows = cashSum;
-							cashSum = 0;
-						}
-
-						gridMoveStatus = "Original";
-						grid = Logic.CreateGrid(numOfRows);
-						UI.PrintGrid(grid, gridMoveStatus);
-
-						if (Logic.ShouldTheGridRotate(grid) == true)
-						{
-							gridMoveStatus = "Rotated";
-							grid = Logic.MoveGridElements(grid);
-							UI.PrintGrid(grid, gridMoveStatus);
-						}
-
-						int cash = Logic.CheckGridSimilarElements(numOfRows, grid);
-						cashSum = cashSum + cash;
-					}
-				}
-
-				UI.PrintWinLoseMsg(cashSum);
+				int sumCash = Logic.CheckGridSimilarElements(numOfRows, grid);
+				UI.PrintWinLoseMsg(sumCash);
 
 			} while (UI.AskToContinueGame() == true);
-
-
 
 		}
 	}

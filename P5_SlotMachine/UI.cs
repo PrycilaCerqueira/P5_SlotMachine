@@ -97,7 +97,7 @@ namespace P5_SlotMachine
             }
             else
             {
-                Console.WriteLine($"\nYou LOSE!!!\nTotal ${cashSum}");
+                Console.WriteLine($"\nYou LOSE!!!");
             }
 
         }
