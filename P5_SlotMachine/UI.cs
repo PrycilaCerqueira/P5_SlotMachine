@@ -23,8 +23,9 @@ namespace P5_SlotMachine
         /// It asks the player how much they would like to bet 
         /// </summary>
         /// <returns> The bet amount (int)</returns>
-        public static int MakeYourBet(int bet)
+        public static int MakeYourBet()
         {
+            int bet = 0;
             Console.Write("\nHow much would you like to bet? Choose $1, $2 or $3.\n");
             
             while (true)

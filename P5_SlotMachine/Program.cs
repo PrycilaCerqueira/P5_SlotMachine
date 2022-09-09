@@ -11,21 +11,20 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 
             do
 			{
-				int bet = UI.MakeYourBet(0); //bet dictates number of rows in grid
+				int numOfRows = UI.MakeYourBet(); //bet dictates number of rows in grid
 
 				string gridMoveStatus = "***Grid***";
-				int[,] grid = Logic.CreateGrid(bet);
+				int[,] grid = Logic.CreateGrid(numOfRows);
 				UI.PrintGrid(grid, gridMoveStatus);
 
-				bool result = Logic.ShouldTheGridRotate(grid);
-				if (result == true)
+				if (Logic.ShouldTheGridRotate(grid) == true)
 				{
 					gridMoveStatus = "*Rotated Grid*";
 					grid = Logic.MoveGridElements(grid);
 					UI.PrintGrid(grid, gridMoveStatus);
 				}
 
-				int cashSum = Logic.CheckGridSimilarElements(bet, grid);
+				int cashSum = Logic.CheckGridSimilarElements(numOfRows, grid);
 
 				while (cashSum != 0)
 				{
@@ -36,29 +35,28 @@ namespace P5_SlotMachine// Note: actual namespace depends on the project name.
 					{
 						if (cashSum > 4) //Calculates the new bet in case the player won more than $4. The limit per round is $3. 
 						{
-							int newBet = UI.MakeYourBet(newBet = 0);
+							int newBet = UI.MakeYourBet();
 							cashSum = cashSum - newBet;
-							bet = newBet;
+							numOfRows = newBet;
 						}
 						else
 						{
-							bet = cashSum;
+							numOfRows = cashSum;
 							cashSum = 0;
 						}
 
 						gridMoveStatus = "Original";
-						grid = Logic.CreateGrid(bet);
+						grid = Logic.CreateGrid(numOfRows);
 						UI.PrintGrid(grid, gridMoveStatus);
 
-						result = Logic.ShouldTheGridRotate(grid);
-						if (result == true)
+						if (Logic.ShouldTheGridRotate(grid) == true)
 						{
 							gridMoveStatus = "Rotated";
 							grid = Logic.MoveGridElements(grid);
 							UI.PrintGrid(grid, gridMoveStatus);
 						}
 
-						int cash = Logic.CheckGridSimilarElements(bet, grid);
+						int cash = Logic.CheckGridSimilarElements(numOfRows, grid);
 						cashSum = cashSum + cash;
 					}
 					else
