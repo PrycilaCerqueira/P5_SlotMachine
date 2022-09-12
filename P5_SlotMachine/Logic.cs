@@ -61,6 +61,11 @@ namespace P5_SlotMachine
             return false;        
         }
 
+        /// <summary>
+        /// Moves the grid elements based on the rocket mode
+        /// </summary>
+        /// <param name="grid">Original 2 dimension grid</param>
+        /// <returns>Returns the updated 2 dimension grid</returns>
         public static int[,] MoveGridElements(int[,] grid)
         {
             int[] currentColumnArray; //Array size is based on the number of rows

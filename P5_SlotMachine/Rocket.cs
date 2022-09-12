@@ -8,6 +8,9 @@ namespace P5_SlotMachine
 {
     internal class Rocket
     {
+        /// <summary>
+        /// Reference a number to the rocket mode (UP or DOWN)
+        /// </summary>
         public enum Mode
         {
             Up = 10,
